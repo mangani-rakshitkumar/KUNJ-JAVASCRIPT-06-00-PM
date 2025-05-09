@@ -1,0 +1,110 @@
+<!-- ### Problem Statement:
+Write a JavaScript program to input electricity unit charges and calculate the total electricity bill according to the given conditions:
+
+- For the first 50 units: Rs. 0.50/unit
+- For the next 100 units (51–150): Rs. 0.75/unit
+- For the next 150 units (151–300): Rs. 1.20/unit
+- For units above 300: Rs. 1.50/unit
+- An additional surcharge of 20% is added to the total bill.
+
+### Example logic:
+1. Input the number of units consumed.
+2. Calculate the bill based on the above rates.
+3. Apply the surcharge and display the final bill amount. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELECTRICITY BILL CALCULATOR</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#bill-form {
+    width: 50%;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="number"] {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    height: 40px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+#bill-amount {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00698f;
+}
+    </style>
+</head>
+<body>
+    <h1>Electricity Bill Calculator</h1>
+    <form id="bill-form">
+        <label for="units">Enter units consumed:</label>
+        <input type="number" id="units" required>
+        <button id="calculate-btn">Calculate Bill</button>
+    </form>
+    <p id="bill-amount"></p>
+
+    <script>
+        document.getElementById('calculate-btn').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    let units = parseFloat(document.getElementById('units').value);
+
+    if (isNaN(units) || units <= 0) {
+        alert('Please enter a valid number of units!');
+        return;
+    }
+
+    let bill = 0;
+
+    if (units <= 50) {
+        bill = units * 0.5;
+    } else if (units <= 150) {
+        bill = 25 + ((units - 50) * 0.75);
+    } else if (units <= 300) {
+        bill = 100 + ((units - 150) * 1.2);
+    } else {
+        bill = 220 + ((units - 300) * 1.5);
+    }
+
+    // Apply 20% surcharge
+    bill += bill * 0.2;
+
+    document.getElementById('bill-amount').innerHTML = `Your total electricity bill is: Rs. ${bill.toFixed(2)}`;
+});
+    </script>
+</body>
+</html>
