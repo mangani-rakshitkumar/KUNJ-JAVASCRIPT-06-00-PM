@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TODO LIST STORAGE</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      width: 100%;
+      height: 100vh;
+      background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 100px;
+    }
+
+    .todo-container {
+      background: #ffffff;
+      padding: 30px 25px;
+      border-radius: 16px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 600px;
+      transition: all 0.4s ease;
+    }
+
+    .todo-container h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 25px;
+      font-size: 32px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .input-group select,
+    .input-group input,
+    .input-group button {
+      padding: 10px 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 2px solid #ddd;
+      background-color: #f8f8f8;
+      color: #333;
+      transition: 0.3s ease;
+    }
+
+    .input-group select {
+      min-width: 160px;
+    }
+
+    .input-group input {
+      flex: 1;
+      min-width: 200px;
+      border-color: #667eea;
+    }
+
+    .input-group button {
+      background-color: #667eea;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .input-group button:hover {
+      background-color: #5a61d1;
+    }
+
+    #taskList {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    #taskList li {
+      background: #f7f9fc;
+      padding: 12px 15px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      transition: 0.3s ease-in-out;
+    }
+
+    #taskList li:hover {
+      transform: translateY(-2px);
+      background: #f0f4ff;
+    }
+
+    #taskList li span,
+    #taskList li input[type="text"] {
+      flex-grow: 1;
+      color: #444;
+      font-size: 16px;
+      border: none;
+      background: transparent;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .actions button {
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .actions .edit {
+      color: #4caf50;
+      border: 1px solid #4caf50;
+      background-color: transparent;
+    }
+
+    .actions .edit:hover {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .actions .delete {
+      color: #f44336;
+      border: 1px solid #f44336;
+      background-color: transparent;
+    }
+
+    .actions .delete:hover {
+      background-color: #f44336;
+      color: white;
+    }
+
+    input[type="text"].edit-input {
+      flex-grow: 1;
+      font-size: 16px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+    }
+
+    .accordion {
+      margin-top: 30px;
+    }
+
+    .accordion-item {
+      background: #6c63ff;
+      color: white;
+      margin-bottom: 10px;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .accordion-header {
+      padding: 15px 20px;
+      font-weight: bold;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .accordion-body {
+      padding: 15px 20px;
+      background-color: #f0f4ff;
+      color: #333;
+      display: none;
+      font-size: 14px;
+    }
+
+    .accordion-item.active .accordion-body {
+      display: block;
+    }
+
+    .accordion-item.active .accordion-header {
+      background-color: #5848dc;
+    }
+
+    @media (max-width: 500px) {
+      .input-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .input-group select,
+      .input-group input,
+      .input-group button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="todo-container">
+    <h1>TODO LIST</h1>
+
+    <div class="input-group">
+      <select id="storageType" onchange="loadTasks()">
+        <option value="local">Local Storage</option>
+        <option value="session">Session Storage</option>
+        <option value="cookie">Cookies</option>
+      </select>
+
+      <input type="text" id="taskInput" placeholder="Add a new task..." />
+      <button onclick="addTask()">Add</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+    <div class="accordion">
+      <div class="accordion-item" onclick="toggleAccordion(this)">
+        <div class="accordion-header">📁 Local Storage</div>
+        <div class="accordion-body" id="localView"></div>
+      </div>
+      <div class="accordion-item" onclick="toggleAccordion(this)">
+        <div class="accordion-header">🧭 Session Storage</div>
+        <div class="accordion-body" id="sessionView"></div>
+      </div>
+      <div class="accordion-item" onclick="toggleAccordion(this)">
+        <div class="accordion-header">🍪 Cookies</div>
+        <div class="accordion-body" id="cookieView"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'todo_tasks';
+
+    function getStorageType() {
+      return document.getElementById('storageType').value;
+    }
+
+    function saveTasks() {
+      const tasks = Array.from(document.querySelectorAll('#taskList li span')).map(span => span.textContent);
+      const storageType = getStorageType();
+
+      if (storageType === 'local') {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+      } else if (storageType === 'session') {
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+      } else if (storageType === 'cookie') {
+        document.cookie = `${STORAGE_KEY}=${encodeURIComponent(JSON.stringify(tasks))};path=/`;
+      }
+
+      updateStorageOverview();
+    }
+
+    function loadTasks() {
+      const taskList = document.getElementById('taskList');
+      taskList.innerHTML = '';
+      const storageType = getStorageType();
+      let tasks = [];
+
+      if (storageType === 'local') {
+        tasks = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      } else if (storageType === 'session') {
+        tasks = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || '[]');
+      } else if (storageType === 'cookie') {
+        const match = document.cookie.match(new RegExp('(^| )' + STORAGE_KEY + '=([^;]+)'));
+        if (match) {
+          tasks = JSON.parse(decodeURIComponent(match[2]));
+        }
+      }
+
+      tasks.forEach(task => createTaskElement(task));
+      updateStorageOverview();
+    }
+
+    function addTask() {
+      const taskInput = document.getElementById('taskInput');
+      const taskText = taskInput.value.trim();
+      if (taskText === '') {
+        alert('Please enter a task.');
+        return;
+      }
+
+      createTaskElement(taskText);
+      saveTasks();
+      taskInput.value = '';
+    }
+
+    function createTaskElement(text) {
+      const taskList = document.getElementById('taskList');
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <span>${text}</span>
+        <div class="actions">
+          <button class="edit" onclick="editTask(this)">Edit</button>
+          <button class="delete" onclick="deleteTask(this)">Delete</button>
+        </div>
+      `;
+      taskList.appendChild(li);
+    }
+
+    function deleteTask(button) {
+      const li = button.closest('li');
+      li.remove();
+      saveTasks();
+    }
+
+    function editTask(button) {
+      const li = button.closest('li');
+      const span = li.querySelector('span');
+      const actionsDiv = li.querySelector('.actions');
+
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.value = span.textContent;
+      input.className = 'edit-input';
+
+      li.replaceChild(input, span);
+
+      actionsDiv.innerHTML = `
+        <button class="edit" onclick="saveTask(this)">Save</button>
+        <button class="delete" onclick="deleteTask(this)">Delete</button>
+      `;
+      input.focus();
+    }
+
+    function saveTask(button) {
+      const li = button.closest('li');
+      const input = li.querySelector('input');
+      const actionsDiv = li.querySelector('.actions');
+
+      const newSpan = document.createElement('span');
+      newSpan.textContent = input.value.trim() || 'Untitled Task';
+
+      li.replaceChild(newSpan, input);
+
+      actionsDiv.innerHTML = `
+        <button class="edit" onclick="editTask(this)">Edit</button>
+        <button class="delete" onclick="deleteTask(this)">Delete</button>
+      `;
+      saveTasks();
+    }
+
+    function updateStorageOverview() {
+      const local = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      const session = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || '[]');
+
+      let cookie = [];
+      const match = document.cookie.match(new RegExp('(^| )' + STORAGE_KEY + '=([^;]+)'));
+      if (match) {
+        cookie = JSON.parse(decodeURIComponent(match[2]));
+      }
+
+      document.getElementById('localView').innerText = local.length ? local.join(', ') : 'No tasks found.';
+      document.getElementById('sessionView').innerText = session.length ? session.join(', ') : 'No tasks found.';
+      document.getElementById('cookieView').innerText = cookie.length ? cookie.join(', ') : 'No tasks found.';
+    }
+
+    function toggleAccordion(item) {
+      item.classList.toggle('active');
+    }
+
+    window.onload = loadTasks;
+  </script>
+</body>
+</html>
