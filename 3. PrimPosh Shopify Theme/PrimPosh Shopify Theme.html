@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRIMPOSH SHOPIFY THEME</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    .AA {
+        width: 100%;
+        height: 190px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .AA h5 {
+        color: rgb(102, 49, 48);
+        font-weight: 100;
+        font-size: 17px;
+    }
+
+    .AA h1 {
+        color: rgb(102, 49, 48);
+        font-weight: 100;
+        font-size: 45px;
+    }
+
+    .main {
+        height: 100%;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+
+    }
+
+    .box {
+        width: 350px;
+        height: 500px;
+        border: transparent;
+        overflow: hidden;
+    }
+
+    .imgbox {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        transition: all ease 0.5s;
+    }
+
+    .imgbox:hover {
+        scale: 1.2;
+        cursor: pointer;
+    }
+
+    .main button {
+        width: 300px;
+        height: 40px;
+        border: 1px solid transparent;
+        background-color: rgb(102, 49, 48);
+        color: white;
+        position: absolute;
+    }
+
+    .main button:hover {
+        border: 1px solid transparent;
+        background-color: black;
+        color: white;
+    }
+</style>
+<body>
+    <div class="AA">
+        <h5>CUSTOMER CHOICE</h5>
+        <h1>Hot Selling Products</h1>
+    </div>
+    <div class="main"></div>
+
+</body>
+
+<script>
+    let main = document.querySelector(".main")
+    let imgarray = ["https://primposh-theme.myshopify.com/cdn/shop/files/ProductBase29.jpg?v=1718363218&width=533", "https://primposh-theme.myshopify.com/cdn/shop/files/ProductBase21.jpg?v=1718362537&width=533", "https://primposh-theme.myshopify.com/cdn/shop/files/ProductBase25.jpg?v=1718362908&width=533", "https://primposh-theme.myshopify.com/cdn/shop/files/ProductBase17.jpg?v=1718362341&width=533"]
+    for (let i = 0; i <= 3; i++) {
+        let div = document.createElement("div")
+        div.setAttribute("class", "box")
+
+        main.appendChild(div)
+
+        let img = document.createElement("img")
+        img.setAttribute("src", imgarray[i])
+        img.setAttribute("class", "imgbox")
+
+        div.appendChild(img)
+    }
+</script>
+</html>
