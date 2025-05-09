@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SELECTED ITEM</title>
+</head>
+<body>
+    <select id="selecteditem">
+        <option value="opt1">Name</option>
+        <option value="opt2">City</option>
+        <option value="opt3">Marks</option>
+    </select>
+    <h1 id="text"></h1>
+
+    <script>
+        let selector = document.getElementById("selecteditem");
+        let textElement = document.getElementById("text");
+        textElement.innerText = "You selected Name";
+
+        selector.addEventListener("change", function () {
+            let item = selector.value;
+            switch (item) {
+                case "opt1":
+                    textElement.textContent = "You selected Name";
+                    console.log("name")
+                    break;
+                case "opt2":
+                    textElement.textContent = "You selected City";
+                    console.log("city")
+                    break;
+                case "opt3":
+                    textElement.textContent = "You selected Marks";
+                    console.log("marks")
+                    break;
+                default:
+                    textElement.textContent = "";
+                    
+            }
+        });
+    </script>
+</body>
+</html>

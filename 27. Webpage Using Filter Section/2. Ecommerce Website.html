@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PRODUCT FILTER</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    body {
+      display: flex;
+      background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+      height: 100vh;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .AA {
+      width: 300px;
+      padding: 20px;
+      flex-shrink: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      overflow: hidden;
+      animation: slideInLeft 1s ease forwards;
+    }
+
+    .filters {
+      margin-top: 20px;
+    }
+
+    .filters h3 {
+      margin-bottom: 10px;
+    }
+
+    #selectItem {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 16px;
+      border: 2px solid aqua;
+      outline: none;
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .filter-section {
+      margin-bottom: 20px;
+    }
+
+    .filter-section label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .color-boxes {
+      display: flex;
+      gap: 10px;
+    }
+
+    .color-box {
+      width: 25px;
+      height: 25px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .color-box:hover {
+      transform: scale(1.2);
+    }
+
+    .color-red {
+      background-color: red;
+    }
+
+    .color-black {
+      background-color: black;
+    }
+
+    .color-blue {
+      background-color: blue;
+    }
+
+    .content {
+      margin-left: 300px;
+      overflow-y: auto;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product-card {
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: contain;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .product-card h1 {
+      font-size: 18px;
+      margin: 10px 0;
+      word-wrap: break-word;
+    }
+
+    .product-card:hover {
+      transform: scale(1.02);
+      transition: transform 0.3s ease;
+    }
+
+    /* KEYFRAMES */
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="AA">
+    <h3>PRODUCTS</h3>
+    <select id="selectItem">
+      <option value="all">All</option>
+      <option value="mens">Men's Clothing</option>
+      <option value="women">Women's Clothing</option>
+      <option value="jewelery">Jewelery</option>
+      <option value="electronics">Electronics</option>
+    </select>
+
+    <div class="filters">
+      <div class="filter-section">
+        <h3>Size</h3>
+        <label><input type="checkbox" /> S</label>
+        <label><input type="checkbox" /> M</label>
+        <label><input type="checkbox" /> L</label>
+        <label><input type="checkbox" /> XL</label>
+      </div>
+
+      <div class="filter-section">
+        <h3>Colors</h3>
+        <div class="color-boxes">
+          <div class="color-box color-red" title="Red"></div>
+          <div class="color-box color-black" title="Black"></div>
+          <div class="color-box color-blue" title="Blue"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="main"></div>
+  </div>
+
+  <script>
+    let selectItem = document.getElementById("selectItem");
+    let main = document.querySelector(".main");
+    all();
+
+    selectItem.addEventListener("change", function () {
+      main.innerHTML = "";
+      let select = selectItem.value;
+      switch (select) {
+        case "all":
+          all();
+          break;
+        case "mens":
+          mens();
+          break;
+        case "women":
+          women();
+          break;
+        case "electronics":
+          electronics();
+          break;
+        case "jewelery":
+          jewelery();
+          break;
+        default:
+          mens();
+          break;
+      }
+    });
+
+    function all() {
+      fetch("https://fakestoreapi.com/products")
+        .then((req) => req.json())
+        .then((res) => {
+          res.forEach((element) => {
+            let card = document.createElement("div");
+            card.className = "product-card";
+
+            let img = document.createElement("img");
+            img.setAttribute("src", element.image);
+
+            let title = document.createElement("h1");
+            title.innerText = element.title;
+
+            let price = document.createElement("h1");
+            price.innerText = `₹${element.price}`;
+
+            let description = document.createElement("h1");
+            description.innerText = element.description;
+
+            card.appendChild(img);
+            card.appendChild(title);
+            card.appendChild(price);
+            card.appendChild(description);
+            main.appendChild(card);
+          });
+        });
+    }
+
+    function mens() {
+      fetch("https://fakestoreapi.com/products")
+        .then((req) => req.json())
+        .then((res) => {
+          let x = res.filter((e) => e.category == "men's clothing");
+          x.forEach((element) => {
+            let card = document.createElement("div");
+            card.className = "product-card";
+
+            let img = document.createElement("img");
+            img.setAttribute("src", element.image);
+
+            let title = document.createElement("h1");
+            title.innerText = element.title;
+
+            let price = document.createElement("h1");
+            price.innerText = `₹${element.price}`;
+
+            let description = document.createElement("h1");
+            description.innerText = element.description;
+
+            card.appendChild(img);
+            card.appendChild(title);
+            card.appendChild(price);
+            card.appendChild(description);
+            main.appendChild(card);
+          });
+        });
+    }
+
+    function women() {
+      fetch("https://fakestoreapi.com/products")
+        .then((req) => req.json())
+        .then((res) => {
+          let x = res.filter((e) => e.category == "women's clothing");
+          x.forEach((element) => {
+            let card = document.createElement("div");
+            card.className = "product-card";
+
+            let img = document.createElement("img");
+            img.setAttribute("src", element.image);
+
+            let title = document.createElement("h1");
+            title.innerText = element.title;
+
+            let price = document.createElement("h1");
+            price.innerText = `₹${element.price}`;
+
+            let description = document.createElement("h1");
+            description.innerText = element.description;
+
+            card.appendChild(img);
+            card.appendChild(title);
+            card.appendChild(price);
+            card.appendChild(description);
+            main.appendChild(card);
+          });
+        });
+    }
+
+    function jewelery() {
+      fetch("https://fakestoreapi.com/products")
+        .then((req) => req.json())
+        .then((res) => {
+          let x = res.filter((e) => e.category == "jewelery");
+          x.forEach((element) => {
+            let card = document.createElement("div");
+            card.className = "product-card";
+
+            let img = document.createElement("img");
+            img.setAttribute("src", element.image);
+
+            let title = document.createElement("h1");
+            title.innerText = element.title;
+
+            let price = document.createElement("h1");
+            price.innerText = `₹${element.price}`;
+
+            let description = document.createElement("h1");
+            description.innerText = element.description;
+
+            card.appendChild(img);
+            card.appendChild(title);
+            card.appendChild(price);
+            card.appendChild(description);
+            main.appendChild(card);
+          });
+        });
+    }
+
+    function electronics() {
+      fetch("https://fakestoreapi.com/products")
+        .then((req) => req.json())
+        .then((res) => {
+          let x = res.filter((e) => e.category == "electronics");
+          x.forEach((element) => {
+            let card = document.createElement("div");
+            card.className = "product-card";
+
+            let img = document.createElement("img");
+            img.setAttribute("src", element.image);
+
+            let title = document.createElement("h1");
+            title.innerText = element.title;
+
+            let price = document.createElement("h1");
+            price.innerText = `₹${element.price}`;
+
+            let description = document.createElement("h1");
+            description.innerText = element.description;
+
+            card.appendChild(img);
+            card.appendChild(title);
+            card.appendChild(price);
+            card.appendChild(description);
+            main.appendChild(card);
+          });
+        });
+    }
+  </script>
+</body>
+</html>
