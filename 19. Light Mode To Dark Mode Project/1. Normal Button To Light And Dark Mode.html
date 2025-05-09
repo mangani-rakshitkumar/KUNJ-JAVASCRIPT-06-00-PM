@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>LIGHT AND DARK MODE BUTTON</title>
+  </head>
+  <body>
+    <div class="main w-full h-screen flex justify-center items-center bg-white" id="classs">
+      <button class="w-[250px] h-[60px] bg-black text-white" onclick="toggle()" id="btn">Click To Dark Mode</button>
+    </div>
+
+    <script>
+      let toggle = () => {
+        let main = document.getElementById('classs');
+        let buttonnn= document.getElementById('btn');
+
+        if (main.classList.contains("bg-white")) {
+          buttonnn.innerText = "Click To Lite Mode";
+          main.classList.remove("bg-white");
+          main.classList.add("bg-black");
+          buttonnn.classList.remove("bg-black");
+          buttonnn.classList.remove("text-white")
+          buttonnn.classList.add("bg-white");
+          buttonnn.classList.add("text-black")
+
+        
+        } else {
+          buttonnn.innerText = "Click To Dark Mode";
+          main.classList.remove("bg-black");
+          main.classList.add("bg-white");
+          buttonnn.classList.remove("bg-white");
+          buttonnn.classList.remove ("text-black")
+          buttonnn.classList.add("bg-black");
+          buttonnn.classList.add("text-white")
+
+        }
+      }
+    </script>
+  </body>
+</html>
