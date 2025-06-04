@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API FETCH</title>
+</head>
+<body>
+    <Script>
+        fetch('https://api.escuelajs.co/api/v1/categories')
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+    </Script>
+</body>
+</html>
