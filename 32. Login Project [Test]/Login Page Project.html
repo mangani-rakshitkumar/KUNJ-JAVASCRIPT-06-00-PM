@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>LOGIN PAGE</title>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      width: 100%;
+      height: 100vh;
+      background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .dont {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #666;
+      gap: 5px;
+    }
+
+    .container-wrapper {
+      width: 100px;
+      height: 650px;
+      background: #fff;
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .tab-buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+      border-bottom: 2px solid aqua;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 10px;
+      border-bottom: none;
+      border-right: none;
+      border-left: none;
+      border-top: 2px solid aqua;
+      background: white;
+      cursor: pointer;
+      font-size: 16px;
+
+    }
+
+    .tab-btn.active {
+      background-color: rgb(0, 200, 255);
+      color: white;
+      font-weight: bold;
+    }
+
+    form {
+      width: 100%;
+      height: 550px;
+      display: none;
+      flex-direction: column;
+    }
+
+    form.active {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .btn {
+      background-color: rgb(0, 200, 255);
+      color: white;
+      border: none;
+      padding: 12px;
+      margin-top: 15px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .forgot-link {
+      text-align: right;
+    }
+
+    .forgot-link a {
+      font-size: 14px;
+      text-decoration: none;
+      color: rgb(0, 162, 255);
+    }
+
+    .error-message {
+      color: red;
+      font-size: 13px;
+      margin-top: -5px;
+    }
+
+    .center {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .otp-inputs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .otp-inputs input {
+      width: 40px;
+      padding: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .tick {
+      text-align: center;
+      padding: 50px;
+      font-size: 100px;
+      color: aqua;
+    }
+
+    /* Social login buttons */
+    .social-logins {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .social-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      background: #fff;
+    }
+
+    .social-button img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .google-button {
+      border: 1px solid #ddd;
+    }
+
+    .apple-button {
+      background: black;
+      color: white;
+    }
+
+    .social-text {
+      text-align: center;
+      font-size: 14px;
+      margin: 10px 0;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container-wrapper">
+    <div class="tab-buttons">
+      <button class="tab-btn active" onclick="showForm('login')">Log in</button>
+      <button class="tab-btn" onclick="showForm('signup')">Sign up</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="login" class="active" onsubmit="handleLogin(event)">
+      <label>Your Email</label>
+      <input type="email" id="login-email">
+      <div class="error-message" id="login-email-error"></div>
+
+      <label>Password</label>
+      <input type="password" id="login-password">
+      <div class="error-message" id="login-password-error"></div>
+
+      <div class="forgot-link">
+        <a href="#" onclick="showForm('forgot'); return false;">Forgot password?</a>
+      </div>
+
+      <button class="btn">Continue</button>
+
+      <div class="social-text">Or Login With</div>
+
+      <div class="social-logins">
+        <div class="social-button google-button">
+          <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google" />
+          Login with Google
+        </div>
+        <div class="social-button apple-button">
+          <img src="https://img.icons8.com/ios-filled/50/ffffff/mac-os.png" alt="Apple" />
+          Login with Apple
+        </div>
+      </div>
+      <div class="dont">
+        <p>Don't have an account?</p>
+        <p style="color: rgb(0, 162, 255);">Sing up</p>
+      </div>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signup" onsubmit="handleSignup(event)">
+      <label>Full Name</label>
+      <input type="text" id="signup-name">
+      <div class="error-message" id="signup-name-error"></div>
+
+      <label>Your Email</label>
+      <input type="email" id="signup-email">
+      <div class="error-message" id="signup-email-error"></div>
+
+      <label>Password</label>
+      <input type="password" id="signup-password">
+      <div class="error-message" id="signup-password-error"></div>
+
+      <label>Confirm Password</label>
+      <input type="password" id="signup-confirm">
+      <div class="error-message" id="signup-confirm-error"></div>
+
+      <button class="btn">Sign Up</button>
+    </form>
+
+    <!-- Forgot Password Form -->
+    <form id="forgot" onsubmit="handleForgot(event)">
+      <label>Your Email</label>
+      <input type="email" id="forgot-email">
+      <div class="error-message" id="forgot-email-error"></div>
+      <button class="btn">Reset Password</button>
+    </form>
+
+    <!-- OTP Form -->
+    <form id="otp" onsubmit="handleOTP(event)">
+      <div class="center">Enter 5 digit code sent to your email</div>
+      <div class="otp-inputs" id="otp-boxes">
+        <input maxlength="1"><input maxlength="1"><input maxlength="1"><input maxlength="1"><input maxlength="1">
+      </div>
+      <button class="btn">Verify Code</button>
+    </form>
+
+    <!-- Reset New Password Form -->
+    <form id="reset-password" onsubmit="handleNewPassword(event)">
+      <label>Password</label>
+      <input type="password" id="new-password" placeholder="Enter your new password">
+      <label>Confirm Password</label>
+      <input type="password" id="confirm-new-password" placeholder="Re-enter password">
+      <div class="error-message" id="reset-error"></div>
+      <button class="btn">Update Password</button>
+    </form>
+
+    <!-- Tick Confirmation -->
+    <div id="tick" class="tick" style="display: none;">
+      <i class="fa fa-check-circle"></i>
+    </div>
+  </div>
+
+  <script>
+    function showForm(type) {
+      document.querySelectorAll("form").forEach(f => f.classList.remove("active"));
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+
+      if (type === 'login' || type === 'signup') {
+        document.getElementById(type).classList.add("active");
+        document.querySelector(`.tab-btn[onclick*='${type}']`).classList.add("active");
+      } else {
+        document.getElementById(type).classList.add("active");
+      }
+      document.getElementById("tick").style.display = "none";
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      let email = document.getElementById("login-email").value.trim();
+      let password = document.getElementById("login-password").value.trim();
+      let savedPassword = localStorage.getItem(email);
+      let valid = true;
+
+      document.getElementById("login-email-error").textContent = "";
+      document.getElementById("login-password-error").textContent = "";
+
+      if (!email) {
+        document.getElementById("login-email-error").textContent = "Enter The Email...";
+        valid = false;
+      }
+
+      if (!password || password.length < 6) {
+        document.getElementById("login-password-error").textContent = "Password must be more than 6 characters...";
+        valid = false;
+      }
+
+      if (valid && savedPassword !== password) {
+        document.getElementById("login-password-error").textContent = "Wrong password";
+        valid = false;
+      }
+
+      if (valid) {
+        alert("LOGIN SUCCESSFUL!");
+      }
+    }
+
+    function handleSignup(e) {
+      e.preventDefault();
+      let name = document.getElementById("signup-name").value.trim();
+      let email = document.getElementById("signup-email").value.trim();
+      let password = document.getElementById("signup-password").value.trim();
+      let confirm = document.getElementById("signup-confirm").value.trim();
+      let valid = true;
+
+      document.getElementById("signup-name-error").textContent = "";
+      document.getElementById("signup-email-error").textContent = "";
+      document.getElementById("signup-password-error").textContent = "";
+      document.getElementById("signup-confirm-error").textContent = "";
+
+      if (!name) {
+        document.getElementById("signup-name-error").textContent = "Enter Your Name...";
+        valid = false;
+      }
+
+      if (!email) {
+        document.getElementById("signup-email-error").textContent = "Enter Your Email...";
+        valid = false;
+      }
+
+      if (password.length < 6) {
+        document.getElementById("signup-password-error").textContent = "Password must be more than 6 characters...";
+        valid = false;
+      }
+
+      if (confirm !== password) {
+        document.getElementById("signup-confirm-error").textContent = "Passwords do not match!";
+        valid = false;
+      }
+
+      if (valid) {
+        localStorage.setItem(email, password);
+        alert("SIGN UP SUCCESSFUL!");
+        showForm("login");
+      }
+    }
+
+    function handleForgot(e) {
+      e.preventDefault();
+      let email = document.getElementById("forgot-email").value.trim();
+      document.getElementById("forgot-email-error").textContent = "";
+
+      if (!email) {
+        document.getElementById("forgot-email-error").textContent = "Enter your Email...";
+      } else {
+        alert("OTP sent to " + email + " (try 20065)");
+        showForm("otp");
+      }
+    }
+
+    function handleOTP(e) {
+      e.preventDefault();
+      let otp = Array.from(document.querySelectorAll("#otp-boxes input")).map(input => input.value).join("");
+      if (otp === "20065") {
+        showForm("reset-password");
+      } else {
+        alert("Invalid OTP. Try again.");
+      }
+    }
+
+    function handleNewPassword(e) {
+      e.preventDefault();
+      let newPass = document.getElementById("new-password").value.trim();
+      let confirmPass = document.getElementById("confirm-new-password").value.trim();
+      let email = document.getElementById("forgot-email").value.trim();
+
+      document.getElementById("reset-error").textContent = "";
+
+      if (newPass !== confirmPass || newPass.length < 6) {
+        document.getElementById("reset-error").textContent = "Passwords must match and be at least 6 characters";
+        return;
+      }
+
+      localStorage.setItem(email, newPass);
+      document.getElementById("reset-password").classList.remove("active");
+      document.getElementById("tick").style.display = "block";
+      setTimeout(() => showForm("login"), 2000);
+    }
+  </script>
+</body>
+</html>
