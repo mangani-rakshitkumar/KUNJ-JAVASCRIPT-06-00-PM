@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CALCULATOR</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .calculator {
+            background-color: #111;
+            border: 2px solid #333;
+            border-radius: 12px;
+            padding: 20px;
+            width: 320px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .display {
+            background-color: #000;
+            color: aqua;
+            font-size: 2rem;
+            padding: 20px;
+            text-align: right;
+            border: none;
+            border-bottom: 2px solid #333;
+            margin-bottom: 15px;
+            width: 100%;
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .buttons button {
+            padding: 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            background-color: #222;
+            color: #fff;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+
+        .buttons button:hover {
+            background-color: #333;
+        }
+
+        .buttons .operator {
+            color: #0af;
+        }
+
+        .buttons .equal {
+            background-color: aqua;
+            color: #000;
+        }
+
+        .buttons .equal:hover {
+            background-color: rgb(0, 208, 255);
+        }
+
+        .buttons .clear {
+            background-color: #f00;
+            color: #fff;
+        }
+
+        .buttons .clear:hover {
+            background-color: rgb(223, 6, 6);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <input type="text" class="display" id="display" disabled />
+        <div class="buttons">
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button onclick="deleteLast()">←</button>
+            <button onclick="append('%')">%</button>
+            <button class="operator" onclick="append('/')">÷</button>
+
+            <button onclick="append('7')">7</button>
+            <button onclick="append('8')">8</button>
+            <button onclick="append('9')">9</button>
+            <button class="operator" onclick="append('*')">×</button>
+
+            <button onclick="append('4')">4</button>
+            <button onclick="append('5')">5</button>
+            <button onclick="append('6')">6</button>
+            <button class="operator" onclick="append('-')">−</button>
+
+            <button onclick="append('1')">1</button>
+            <button onclick="append('2')">2</button>
+            <button onclick="append('3')">3</button>
+            <button class="operator" onclick="append('+')">+</button>
+
+            <button onclick="append('0')">0</button>
+            <button onclick="append('.')">.</button>
+            <button class="equal" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <script>
+        const display = document.getElementById('display');
+
+        function append(value) {
+            display.value += value;
+        }
+
+        function clearDisplay() {
+            display.value = '';
+        }
+
+        function deleteLast() {
+            display.value = display.value.slice(0, -1);
+        }
+
+        function calculate() {
+            try {
+                let expression = display.value.replace(/%/g, "/100");
+                display.value = eval(expression);
+            } catch {
+                display.value = 'Error';
+            }
+        }
+    </script>
+
+</body>
+</html>
