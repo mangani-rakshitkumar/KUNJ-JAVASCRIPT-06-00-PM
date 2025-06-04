@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PRODUCT FILTER UI</title>
+  <style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family:'Courier New', Courier, monospace;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+      display: flex;
+    }
+
+    .filter-box {
+      width: 500px;
+      padding: 1.5rem;
+      border-right: 1px solid #e0e0e0;
+      height: 100vh;
+      position: sticky;
+      top: 0;
+    }
+
+    .dropdown {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .dropdown-btn {
+      border: 3px solid aqua;
+      padding: 10px;
+      border-radius: 5px;
+      width: 100%;
+      cursor: pointer;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dropdown-btn::after {
+      content: '▼';
+      font-size: 12px;
+      margin-left: 10px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      width: 100%;
+      margin-top: 5px;
+      z-index: 1000;
+      max-height: 180px;
+      overflow-y: auto;
+    }
+
+    .dropdown-content label {
+      display: block;
+      padding: 8px 10px;
+      cursor: pointer;
+    }
+
+    .dropdown-content input {
+      margin-right: 8px;
+    }
+
+    .dropdown.open .dropdown-content {
+      display: block;
+    }
+
+    .filter-group {
+      margin-top: 1rem;
+    }
+
+    .filter-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .colors {
+      display: flex;
+      gap: 10px;
+      margin-top: 5px;
+    }
+
+    .color-box {
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .color-red { background-color: red; }
+    .color-black { background-color: black; }
+    .color-blue { background-color: blue; }
+
+    .color-box.selected {
+      border-color: #007bff;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      padding: 2rem;
+      flex: 1;
+    }
+
+    .product {
+      background: white;
+      padding: 1rem;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .product img {
+      max-width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .product-name {
+      margin: 10px 0;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .product-info {
+      font-size: 14px;
+      color: #777;
+    }
+
+    .product-price {
+      font-size: 16px;
+      font-weight: bold;
+      color: #007bff;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="filter-box">
+    <h3>PRODUCTS</h3>
+    <div class="dropdown" id="productDropdown">
+      <div class="dropdown-btn">All</div>
+      <div class="dropdown-content">
+        <label><input type="checkbox" value="All" checked> All</label>
+        <label><input type="checkbox" value="Clothes"> Clothes</label>
+        <label><input type="checkbox" value="Accessories"> Accessories</label>
+        <label><input type="checkbox" value="Make up"> Make Up</label>
+        <label><input type="checkbox" value="Sport Shoes"> Sport Shoes</label>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label>Size</label>
+      <input type="checkbox" value="S"> S<br>
+      <input type="checkbox" value="M"> M<br>
+      <input type="checkbox" value="L"> L<br>
+      <input type="checkbox" value="XL"> XL
+    </div>
+
+    <div class="filter-group">
+      <label>Colors</label>
+      <div class="colors">
+        <div class="color-box color-red" data-color="Red"></div>
+        <div class="color-box color-black" data-color="Black"></div>
+        <div class="color-box color-blue" data-color="Blue"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="products" id="productContainer"></div>
+
+  <script>
+    let allProducts = [
+      { name: 'Red Shirt', category: 'Clothes', size: 'S', color: 'Red', price: 999, img: 'https://rukminim2.flixcart.com/image/850/1000/l44hyfk0/shirt/t/0/2/m-fmsht0557-flying-machine-original-imagf3je8dbsecsf.jpeg?q=90&crop=false' },
+      { name: 'Sweatshirt', category: 'Clothes', size: 'M', color: 'Black', price: 999, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/sweatshirt/p/p/5/m-4k-3518-3540-robbot-original-imah5mtgdtuhuqbh.jpeg?q=90&crop=false' },
+      { name: 'Blue Shirt', category: 'Clothes', size: 'L', color: 'Blue', price: 999, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/shirt/5/x/s/m-casual-shirts24-jessnx-original-imags22qgeekhent.jpeg?q=90&crop=false' },
+      { name: 'Classy Shirt', category: 'Clothes', size: 'XL', color: 'Red', price: 1299, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/shirt/h/t/3/m-dno-3115-keptiv-original-imah33nwzvg8rhwz.jpeg?q=90&crop=false' },
+      { name: 'Black Shirt', category: 'Clothes', size: 'XL', color: 'Black', price: 1299, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/shopsy-shirt/p/f/c/xl-spsy-9-shirt-full-shirtify-original-imagn5hnzcdg2nfz.jpeg?q=90&crop=false' },
+      { name: 'Blue Hoodie', category: 'Clothes', size: 'XL', color: 'Blue', price: 1299, img: 'https://assets.ajio.com/medias/sys_master/root/20230707/FOmN/64a71543eebac147fc5ac6e3/-473Wx593H-466336868-blue-MODEL.jpg' },
+      { name: 'Red Dress', category: 'Clothes', size: 'S', color: 'Red', price: 1599, img: 'https://rukminim2.flixcart.com/image/850/1000/kruyw7k0/kurta/j/9/t/xxl-anarkali-zyxa-original-imag5jbs5vhzjyxf.jpeg?q=90&crop=false' },
+      { name: 'Black Dress', category: 'Clothes', size: 'M', color: 'Black', price: 1599, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/kurta/o/o/l/xl-black-pintucks-cotton-kurti-vaasn-original-imagkrua23k55pna.jpeg?q=90&crop=false' },
+      { name: 'Blue Dress', category: 'Clothes', size: 'L', color: 'Blue', price: 1599, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/kurta/a/x/f/xxl-d1004-solid-pure-cotton-diktmark-original-imagkab6bbbyyquk.jpeg?q=90&crop=false' },
+      { name: 'Red Saree', category: 'Clothes', size: 'S', color: 'Red', price: 1899, img: 'https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/22142724/2023/3/14/ade9f9f7-07e8-4a21-8f45-cbfbbf8877b71678782083298-kasee-Embroidered-Art-Silk-Saree-1171678782082521-2.jpg' },
+      { name: 'Black Saree', category: 'Clothes', size: 'M', color: 'Black', price: 1899, img: 'https://rukminim3.flixcart.com/image/850/1000/ky1vl3k0/sari/e/g/3/free-awesome-black-villagius-unstitched-original-imagadavr5pk3qmf.jpeg?q=90&crop=false' },
+      { name: 'Blue Saree', category: 'Clothes', size: 'L', color: 'Blue', price: 1899, img: 'https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/30270592/2024/7/20/f8b1de0b-d969-410f-89cb-f6a654fffbf41721477620773SochEmbroideredOrganzaSaree1.jpg' },
+      { name: 'Leather Bag', category: 'Accessories', color: 'Red', price: 1299, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/backpack/m/c/q/13-women-ladies-genuine-leather-versatile-shoulder-bags-with-original-imagqz6juwyfmbkk.jpeg?q=90&crop=false' },
+      { name: 'Travel Bag', category: 'Accessories', color: 'Black', price: 1299, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/rucksack/o/q/a/-original-imagtg2ha4hnqfu8.jpeg?q=90&crop=false' },
+      { name: 'Travel Bag', category: 'Accessories', color: 'Blue', price: 1299, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/suitcase/g/s/m/-original-imagsn6qwrfb8zzd.jpeg?q=90&crop=false' },
+      { name: 'Watch', category: 'Accessories', color: 'Red', price: 999, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/watch/s/b/4/gyro-spinning-red-01-ab-collection-men-original-imah34t8syeezguh.jpeg?q=20&crop=false' },
+      { name: 'Watch', category: 'Accessories', color: 'Black', price: 999, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/watch/t/t/j/gyro-spinning-white-01-ab-collection-men-original-imah34t8tajgcg6z.jpeg?q=90&crop=false' },
+      { name: 'Watch', category: 'Accessories', color: 'Blue', price: 999, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/watch/5/k/1/gyro-spinning-blue-01-ab-collection-men-original-imah34t8qhdmssea.jpeg?q=20&crop=false' },
+      { name: 'Fancy Earrings', category: 'Accessories', color: 'Red', price: 599, img: 'https://www.jiomart.com/images/product/original/rv8gywtspb/fashion-frill-fashion-frill-exclusively-pearl-floral-designs-gold-plated-jhumka-earrings-for-girls-women-stylish-latest-fancy-earrings-red-product-images-rv8gywtspb-2-202305052154.jpg?im=Resize=(1000,1000)' },
+      { name: 'Fancy Earrings', category: 'Accessories', color: 'Black', price: 599, img: 'https://rukminim2.flixcart.com/image/850/1000/l2qhjm80/earring/h/o/d/na-1p-blk-9001-style-freak-original-imageygke4r4cagf.jpeg?q=90&crop=false' },
+      { name: 'Fancy Earrings', category: 'Accessories', color: 'Blue', price: 599, img: 'https://assets.ajio.com/medias/sys_master/root/20230515/lMYf/64621b1dd55b7d0c63b34809/-473Wx593H-469067773-multi-MODEL2.jpg' },
+      { name: 'Necklace', category: 'Accessories', color: 'Red', price: 2999, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/jewellery-set/p/n/b/-original-imagtud4hfzfkv43.jpeg?q=90&crop=false' },
+      { name: 'Necklace', category: 'Accessories', color: 'Black', price: 2999, img: 'https://rukminim3.flixcart.com/image/850/1000/xif0q/necklace-chain/0/e/j/3-alloy-brass-gold-plated-jewel-set-necklace-set-blackstone-original-imagp7fbjtk3nvum.jpeg?q=90&crop=false' },
+      { name: 'Necklace', category: 'Accessories', color: 'Blue', price: 2999, img: 'https://assets0.mirraw.com/images/12192383/image_zoom.jpeg?1705486199' },
+      { name: 'Red Lipstick', category: 'Make up', color: 'Red', price: 499, img: 'https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2025/FEBRUARY/24/yg05n1s4_7bfb946e87814cb7be46428fc6aa083b.jpg' },
+      { name: 'Black Lipstick', category: 'Make up', color: 'Black', price: 499, img: 'https://m.media-amazon.com/images/I/31NnukNoIWL._BO30,255,255,255_UF900,850_SR1910,1000,0,C_QL100_.jpg' },
+      { name: 'Blue Lipstick', category: 'Make up', color: 'Blue', price: 499, img: 'https://m.media-amazon.com/images/I/41w07p77ZtL.jpg' },
+      { name: 'Red Eyeliner', category: 'Make up', color: 'Red', price: 99, img: 'https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/23602970/2025/1/10/2149654b-44e8-4dec-b2b6-5e0ff1e26d3f1736519300952-Just-Herbs-Waterproof-Herb-Enriched-Liquid-Eyeliner-25-ml----1.jpg' },
+      { name: 'Black Eyeliner', category: 'Make up', color: 'Black', price: 99, img: 'https://assets.myntassets.com/w_412,q_60,dpr_2,fl_progressive/assets/images/18524334/2022/5/31/f22b7155-679b-4d72-88e6-00895129d01c1653943579505KajalandEyeliner1.jpg' },
+      { name: 'Blue Eyeliner', category: 'Make up', color: 'Blue', price: 99, img: 'https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2024/OCTOBER/10/AQIIur34_c31dfc878ed14025b7b05dc7ff2679a6.jpg' },
+      { name: 'red Eyeshadow', category: 'Make up', color: 'Red', price: 799, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/blush/s/0/j/4-5-make-up-blushing-facial-beauty-cosmetic-makeup-blush-myeong-original-imags8jhr2hw7tsk.jpeg?q=20&crop=false' },
+      { name: 'Black Eyeshadow', category: 'Make up', color: 'Black', price: 799, img: 'https://img.freepik.com/premium-photo/high-angle-view-pipes_1048944-6845797.jpg' },
+      { name: 'Blue Eyeshadow', category: 'Make up', color: 'Blue', price: 799, img: 'https://rukminim2.flixcart.com/image/850/1000/kx7vc7k0/eye-shadow/k/c/k/9-9-blue-eyeshadow-for-every-eye-color-gfsu-original-imag9psy63tgbfd5.jpeg?q=90&crop=false' },
+      { name: 'Makeup Kit', category: 'Make up', color: 'Red', price: 1499, img: 'https://rukminim2.flixcart.com/image/850/1000/kmmcrrk0/makeup-kit/s/c/p/mini-make-up-kit-5021-t-y-a-original-imagfh75zkjbzsvv.jpeg?q=90&crop=false' },
+      { name: 'Makeup Kit', category: 'Make up', color: 'Black', price: 1499, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/brush-applicator/9/v/d/premium-set-of-24-pcs-soft-hair-makeup-brush-black-pack-of-24-24-original-imagh8ssfwmgmts7.jpeg?q=90&crop=false' },
+      { name: 'Makeup Kit', category: 'Make up', color: 'Blue', price: 1499, img: 'https://images-na.ssl-images-amazon.com/images/I/91kW3gINFTL.jpg' },  
+      { name: 'Nike Running Shoes', category: 'Sport Shoes', color: 'Red', price: 5999, img: 'https://rukminim2.flixcart.com/image/850/1000/kf4ajrk0-0/shoe/t/i/q/ci9981-600-13-nike-university-red-white-black-original-imafvngfpcun2wdb.jpeg?q=90&crop=false' },  
+      { name: 'Nike Running Shoes', category: 'Sport Shoes', color: 'Black', price: 5999, img: 'https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/29534132/2024/11/29/deac9c8e-a017-40af-b2e0-14218e822dec1732858536388-New-Balance-DynaSoft-Nitrel-V5-Running-Shoes-138173285853607-1.jpg' },  
+      { name: 'Nike Running Shoes', category: 'Sport Shoes', color: 'Blue', price: 5999, img: 'https://5.imimg.com/data5/SELLER/Default/2022/1/SB/VI/YC/145828260/blue-running-shoes.jpg' },  
+      { name: 'Canvas Loafers', category: 'Sport Shoes', color: 'Red', price: 2599, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/shoe/t/9/d/4-cr-1800-red-carrito-red-original-imagefjegjtpqhxe-bb.jpeg?q=90&crop=false' },  
+      { name: 'Canvas Loafers', category: 'Sport Shoes', color: 'Black', price: 2599, img: 'https://rukminim3.flixcart.com/image/850/1000/xif0q/shoe/e/d/8/-original-imagg3a95yfzqmef.jpeg?q=20&crop=false' },  
+      { name: 'Canvas Loafers', category: 'Sport Shoes', color: 'Blue', price: 2599, img: 'https://i5.walmartimages.com/seo/Mens-Canvas-Sneakers-Low-Top-Lace-Up-Canvas-Shoes-Fashion-Comfortable_46cf8d7d-b8ef-49fe-92cd-492fa41b0d9f.4a5b2e3701654d4c2c99de6c6e770797.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF' },  
+      { name: 'Oxford Leather Shoes', category: 'Sport Shoes', color: 'Red', price: 4999, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/shoe/p/o/k/-original-imaggckgdcu9wuwv.jpeg?q=90&crop=false' },  
+      { name: 'Oxford Leather Shoes', category: 'Sport Shoes', color: 'Black', price: 4999, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/shoe/o/s/k/7-8316471-7-bata-black-original-imah2annuqrxgzju.jpeg?q=20&crop=false' },  
+      { name: 'Oxford Leather Shoes', category: 'Sport Shoes', color: 'Blue', price: 4999, img: 'https://m.media-amazon.com/images/I/71yyuYsiA4L._AC_UY1000_.jpg' },  
+      { name: 'White Sneakers', category: 'Sport Shoes', price: 1599, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/shoe/l/o/a/6-red-white-sneakers-sneakers-for-men-osky-red-original-imah4f56dawswhm8.jpeg?q=90&crop=false' },  
+      { name: 'White Sneakers', category: 'Sport Shoes', price: 1599, img: 'https://rukminim2.flixcart.com/image/450/400/xif0q/shoe/y/g/e/10-1800-black-white-shoes-10-waan-black-white-original-imah7dduqz2z8dm8.jpeg?q=90&crop=false' },  
+      { name: 'White Sneakers', category: 'Sport Shoes', price: 1599, img: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/shoe/h/z/9/8-8014-wh-blu-flynce-white-blue-original-imagkwadsx9cpv3e.jpeg?q=90&crop=false' },  
+    ];
+
+    let dropdown = document.getElementById('productDropdown');
+    let dropdownBtn = dropdown.querySelector('.dropdown-btn');
+    let checkboxes = dropdown.querySelectorAll('input[type="checkbox"]');
+
+    let sizeCheckboxes = document.querySelectorAll('.filter-group input[type="checkbox"]');
+    let colorBoxes = document.querySelectorAll('.color-box');
+    let productContainer = document.getElementById('productContainer');
+
+    let selectedCategories = ['All'];
+    let selectedSizes = [];
+    let selectedColor = null;
+
+    function filterProducts() {
+      let filtered = allProducts;
+
+      if (!selectedCategories.includes('All')) {
+        filtered = filtered.filter(p => selectedCategories.includes(p.category));
+      }
+
+      if (selectedSizes.length > 0) {
+        filtered = filtered.filter(p => selectedSizes.includes(p.size));
+      }
+
+      if (selectedColor) {
+        filtered = filtered.filter(p => p.color === selectedColor);
+      }
+
+      displayProducts(filtered);
+    }
+
+    function displayProducts(products) {
+      productContainer.innerHTML = products.map(p => `
+        <div class="product">
+          <img src="${p.img}" alt="${p.name}">
+          <div class="product-name">${p.name}</div>
+          <div class="product-info">${p.category}, ${p.size}, ${p.color}</div>
+          <div class="product-price">₹${p.price}</div>
+        </div>
+      `).join('');
+    }
+
+    dropdownBtn.addEventListener('click', () => {
+      dropdown.classList.toggle('open');
+    });
+
+    checkboxes.forEach(cb => {
+      cb.addEventListener('change', () => {
+        selectedCategories = Array.from(checkboxes).filter(c => c.checked).map(c => c.value);
+        dropdownBtn.textContent = selectedCategories.join(', ') || 'Select';
+        filterProducts();
+      });
+    });
+
+    sizeCheckboxes.forEach(cb => {
+      cb.addEventListener('change', () => {
+        selectedSizes = Array.from(sizeCheckboxes).filter(c => c.checked).map(c => c.value);
+        filterProducts();
+      });
+    });
+
+    colorBoxes.forEach(box => {
+      box.addEventListener('click', () => {
+        colorBoxes.forEach(b => b.classList.remove('selected'));
+        if (selectedColor === box.dataset.color) {
+          selectedColor = null;
+        } else {
+          selectedColor = box.dataset.color;
+          box.classList.add('selected');
+        }
+        filterProducts();
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
+    });
+
+    displayProducts(allProducts);
+  </script>
+</body>
+</html>
