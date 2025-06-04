@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NURTURE.FARM LOGIN & SIGNUP PAGE</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+    }
+
+    .container-wrapper {
+      display: flex;
+      width: 85%;
+      max-width: 1000px;
+      height: 600px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #fff;
+    }
+
+    .left-panel {
+      width: 50%;
+      overflow: hidden;
+    }
+
+    .left-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .left-panel img:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+
+    .right-panel {
+      width: 50%;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: #ffffff;
+    }
+
+    .tab-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+
+    .tab-buttons button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      background-color: #e0e0e0;
+      color: #333;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .tab-buttons button.active {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    form {
+      display: none;
+      flex-direction: column;
+      animation: fadeSlide 0.6s ease;
+    }
+
+    form.active {
+      display: flex;
+    }
+
+    form h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    input {
+      padding: 12px;
+      margin-bottom: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      transition: 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    .forgot-link {
+      text-align: right;
+      margin-bottom: 15px;
+    }
+
+    .forgot-link a {
+      color: #007bff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .forgot-link a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .container-wrapper {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .left-panel,
+      .right-panel {
+        width: 100%;
+        height: auto;
+      }
+
+      .left-panel {
+        height: 250px;
+      }
+    }
+
+    @keyframes fadeSlide {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-wrapper">
+  <div class="left-panel">
+    <img src="https://images.pexels.com/photos/28654296/pexels-photo-28654296/free-photo-of-vibrant-sunflower-field-on-a-sunny-day.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
+  </div>
+
+  <div class="right-panel">
+    <div class="tab-buttons">
+      <button class="tab-btn active" onclick="showForm('login')">Login</button>
+      <button class="tab-btn" onclick="showForm('signup')">Sign Up</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="login" class="active" onsubmit="handleLogin(event)">
+      <h2>Login</h2>
+      <label>Email</label>
+      <input type="email" id="login-email" placeholder="Enter Your Email...">
+      <div class="error-message" id="login-email-error"></div>
+
+      <label>Password</label>
+      <input type="password" id="login-password" placeholder="Enter Your Password...">
+      <div class="error-message" id="login-password-error"></div>
+
+      <div class="forgot-link">
+        <a href="#" onclick="showForm('forgot'); return false;">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="btn">Login</button>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signup" onsubmit="handleSignup(event)">
+      <h2>Sign Up</h2>
+      <label>Full Name</label>
+      <input type="text" id="signup-name" placeholder="Enter Full Name">
+      <div class="error-message" id="signup-name-error"></div>
+
+      <label>Email</label>
+      <input type="email" id="signup-email" placeholder="Enter Email">
+      <div class="error-message" id="signup-email-error"></div>
+
+      <label>Password</label>
+      <input type="password" id="signup-password" placeholder="Create Password">
+      <div class="error-message" id="signup-password-error"></div>
+
+      <label>Confirm Password</label>
+      <input type="password" id="signup-confirm" placeholder="Confirm Password">
+      <div class="error-message" id="signup-confirm-error"></div>
+
+      <button type="submit" class="btn">Sign Up</button>
+    </form>
+
+    <!-- Forgot Password Form -->
+    <form id="forgot" onsubmit="handleForgot(event)">
+      <h2>Reset Password</h2>
+      <label>Email</label>
+      <input type="email" id="forgot-email" placeholder="Enter your registered email">
+      <div class="error-message" id="forgot-email-error"></div>
+      <button type="submit" class="btn">Send Reset Link</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  function showForm(type) {
+    document.querySelectorAll("form").forEach(f => f.classList.remove("active"));
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+
+    if (type === 'login') {
+      document.getElementById("login").classList.add("active");
+      document.querySelectorAll(".tab-btn")[0].classList.add("active");
+    } else if (type === 'signup') {
+      document.getElementById("signup").classList.add("active");
+      document.querySelectorAll(".tab-btn")[1].classList.add("active");
+    } else {
+      document.getElementById("forgot").classList.add("active");
+    }
+
+    document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+  }
+
+  function handleLogin(e) {
+    e.preventDefault();
+    let email = document.getElementById("login-email").value.trim();
+    let password = document.getElementById("login-password").value.trim();
+    let valid = true;
+
+    document.getElementById("login-email-error").textContent = "";
+    document.getElementById("login-password-error").textContent = "";
+
+    if (email === "") {
+      document.getElementById("login-email-error").textContent = "Enter The Email...";
+      valid = false;
+    }
+
+    if (password.length < 6) {
+      document.getElementById("login-password-error").textContent = "Password must be more than 6 characters...";
+      valid = false;
+    }
+
+    if (valid) {
+      alert("LOGIN SUCCESSFUL !");
+      window.location.href = "2. Nurture.Farm Home Page.html";
+    }
+  }
+
+  function handleSignup(e) {
+    e.preventDefault();
+    let name = document.getElementById("signup-name").value.trim();
+    let email = document.getElementById("signup-email").value.trim();
+    let password = document.getElementById("signup-password").value.trim();
+    let confirm = document.getElementById("signup-confirm").value.trim();
+    let valid = true;
+
+    document.getElementById("signup-name-error").textContent = "";
+    document.getElementById("signup-email-error").textContent = "";
+    document.getElementById("signup-password-error").textContent = "";
+    document.getElementById("signup-confirm-error").textContent = "";
+
+    if (name === "") {
+      document.getElementById("signup-name-error").textContent = "Enter Your Name...";
+      valid = false;
+    }
+
+    if (email === "") {
+      document.getElementById("signup-email-error").textContent = "Enter Your Email...";
+      valid = false;
+    }
+
+    if (password.length < 6) {
+      document.getElementById("signup-password-error").textContent = "Password must be more than 6 characters...";
+      valid = false;
+    }
+
+    if (confirm !== password) {
+      document.getElementById("signup-confirm-error").textContent = "Passwords do not match!";
+      valid = false;
+    }
+
+    if (valid) {
+      alert("SIGN UP SUCCESSFUL !");
+      window.location.href = "2. Nurture.Farm Home Page.html";
+    }
+  }
+
+  function handleForgot(e) {
+    e.preventDefault();
+    let email = document.getElementById("forgot-email").value.trim();
+    document.getElementById("forgot-email-error").textContent = "";
+
+    if (email === "") {
+      document.getElementById("forgot-email-error").textContent = "Enter your Email...";
+    } else {
+      alert(`RESET LINK SENT TO ${email}`);
+      showForm("login");
+    }
+  }
+</script>
+</body>
+</html>
