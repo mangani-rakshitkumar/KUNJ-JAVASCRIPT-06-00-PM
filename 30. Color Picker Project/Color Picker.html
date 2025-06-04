@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COLOR PICKER PROJECT</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: linear-gradient(to right, #00dbde 0%, #fc00ff 100%);
+    }
+
+    .container .box {
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .container .box button {
+        width: 250px;
+        height: 50px;
+        background-color: black;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="box">
+            <button onclick="colorPicker()">COLOUR PICKER</button>
+            <button onclick="copyCode()">COPY CODE</button>
+            <span id="colorCode"></span>
+        </div>
+    </div>
+    <script>
+        async function colorPicker() {
+            if (!window.EyeDropper) {
+                alert("NOT SUPPORTED !")
+            }
+
+            let picker = new EyeDropper()
+
+            let code = await picker.open()
+            let result = code.sRGBHex
+
+            let colorCode = document.getElementById("colorCode")
+            colorCode.innerText = result
+        }
+
+        function copyCode() {
+
+            let colorCode = document.getElementById("colorCode")
+            navigator.clipboard.writeText(colorCode.innerText)
+            alert("COPPIED...!")
+        }
+    </script>
+</body>
+</html>
