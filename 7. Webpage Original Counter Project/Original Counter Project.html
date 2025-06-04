@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORIGINAL COUNTER PROJECT</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            font-weight: 800;
+            font-size: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color:black;
+            color: white;
+            gap: 100px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="count" data-target="30000">0</div>
+    <div class="count" data-target="20000">0</div>
+    <div class="count" data-target="10000">0</div>
+
+    <script>
+        let counts = document.querySelectorAll(".count")
+
+        counts.forEach((i) => {
+            let targetcount = +i.dataset.target;
+            let speed = 200;
+            let a = 0;
+            let currentcount = targetcount / speed;
+
+            console.log(currentcount);
+            setInterval(() => {
+                if(a <= targetcount){
+                   i.innerText = a;
+                   a = a + currentcount;
+                }
+            },10);
+        });
+    </script>
+</body>
+</html>
