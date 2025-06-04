@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLICK BOX</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box {
+        height: 250px;
+        width: 250px;
+        border: 1px solid gray;
+        background-color: red;
+    }
+
+    .bg {
+        background-color: aqua;
+        border-radius: 200px;
+    }
+</style>
+<body>
+
+    <div class="box" id="box"></div>
+    <button id="AA1">Click Me</button>
+    <button id="AA2">Remove Me</button>
+</body>
+<script>
+    let AA1 = document.getElementById("AA1")
+    let AA2 = document.getElementById("AA2")
+    let box = document.getElementById("box")
+
+    AA1.addEventListener("click", function () {
+        box.setAttribute("class", "box bg")
+    })
+
+    AA2.addEventListener("click", function () {
+        box.setAttribute("class", "box")
+    })
+</script>
+</html>

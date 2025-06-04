@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARD IMAGE</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    .main {
+        height: 100vh;
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .box {
+        width: 270px;
+        height: 500px;
+        border: 2px solid;
+        border: 1px solid gray;
+    }
+
+    .imgbox {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+</style>
+<body>
+    <div class="main">
+
+    </div>
+</body>
+<script>
+    let main = document.querySelector(".main")
+    let imgarray = ["https://wallpapers.com/images/featured/4k-hd-mobile-5en8ogod15qw40aj.jpg", "https://img1.wallspic.com/previews/2/4/7/9/7/179742/179742-fractal_art-art-fractal-blue-design-500x.jpg", "https://w0.peakpx.com/wallpaper/197/340/HD-wallpaper-mac-os-x-os-x-big-sur.jpg", "https://wallpapercave.com/wp/wp13768201.jpg", "https://www.pixelstalk.net/wp-content/uploads/image10/Abstract-4K-Wallpaper-carnival-vibrant-and-chaotic-colors.jpg"]
+    for (let i = 0; i <= 4; i++) {
+        let div = document.createElement("div")
+
+        div.setAttribute("class", "box")
+
+        main.appendChild(div)
+
+        let img = document.createElement("img")
+        img.setAttribute("src", imgarray[i])
+        img.setAttribute("class", "imgbox")
+
+        div.appendChild(img)
+    }
+</script>
+</html>
