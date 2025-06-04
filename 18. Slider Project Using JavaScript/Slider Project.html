@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> IMAGES SLIDER USING JS</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: black;
+            font-family: Arial, sans-serif;
+        }
+
+        .slider {
+            position: relative;
+            width: 80%;
+            max-width: 700px;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            background: #fff;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+            transition: opacity 0.5s ease-in-out;
+            border-radius: 15px;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .controls {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <img class="slide" src="https://wallpapers.com/images/high/tom-and-jerry-4k-opening-title-y9n6dlwvvafe5xx8.webp"
+            alt="Slide 1">
+        <img class="slide"
+            src="https://wallpapers.com/images/high/tom-and-jerry-4k-statue-of-liberty-4e6163emt3qg0gyn.webp"
+            alt="Slide 2">
+        <img class="slide" src="https://wallpapers.com/images/high/tom-and-jerry-4k-gold-mine-yhve54lrdu5q6im0.webp"
+            alt="Slide 3">
+        <img class="slide" src="https://wallpapers.com/images/high/tom-and-jerry-4k-beach-walk-850umpo3wyb5brbf.webp"
+            alt="Slide 4">
+        <img class="slide"
+            src="https://wallpapers.com/images/high/tom-and-jerry-with-toodles-galore-4k-q6g6d2z1caeqkinv.webp"
+            alt="Slide 5">
+    </div>
+
+    <div class="controls">
+        <button onclick="changeSlide(-1)">Previous</button>
+        <button onclick="changeSlide(1)">Next</button>
+    </div>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            if (currentSlide >= slides.length) currentSlide = 0;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
