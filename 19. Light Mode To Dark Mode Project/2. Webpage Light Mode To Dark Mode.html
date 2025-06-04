@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>ECOMMERCE HOMEPAGE</title>
+  <style>
+    :root {
+      --bg-color-light: #ffffff;
+      --text-color-light: #1a1a1a;
+      --primary-color-light: #a2d2ff;
+      --card-color-light: #f8f9fa;
+
+      --bg-color-dark: #1a1a1a;
+      --text-color-dark: #f1f1f1;
+      --primary-color-dark: #5c9ead;
+      --card-color-dark: #2a2a2a;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color-light);
+      color: var(--text-color-light);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: var(--bg-color-dark);
+      color: var(--text-color-dark);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: var(--card-color-light);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    body.dark-mode header {
+      background-color: var(--card-color-dark);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    nav button {
+      margin-left: 1rem;
+    }
+
+    .hero {
+      padding: 5rem 2rem;
+      background: linear-gradient(135deg, #a2d2ff, #8ec5fc);
+      text-align: center;
+      color: #fff;
+    }
+
+    body.dark-mode .hero {
+      background: linear-gradient(135deg, #5c9ead, #4a88a4);
+    }
+
+    .hero h1 {
+      margin-bottom: 1rem;
+      font-size: 3rem;
+      animation: fadeInDown 1s ease;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 4rem 0 2rem;
+      font-size: 2rem;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .product {
+      background-color: var(--card-color-light);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+    }
+
+    .product:hover {
+      transform: translateY(-10px);
+    }
+
+    body.dark-mode .product {
+      background-color: var(--card-color-dark);
+    }
+
+    .product img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .product h3 {
+      margin: 0.5rem 0;
+    }
+
+    .product button {
+      padding: 0.5rem 1rem;
+      background-color: var(--primary-color-light);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+
+    body.dark-mode .product button {
+      background-color: var(--primary-color-dark);
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .category-card {
+      background-color: var(--card-color-light);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .category-card:hover {
+      transform: translateY(-10px);
+    }
+
+    body.dark-mode .category-card {
+      background-color: var(--card-color-dark);
+    }
+
+    .testimonials {
+      background-color: #f0f0f0;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    body.dark-mode .testimonials {
+      background-color: #292929;
+    }
+
+    .testimonial {
+      max-width: 600px;
+      margin: 2rem auto;
+      font-style: italic;
+      color: #555;
+    }
+
+    body.dark-mode .testimonial {
+      color: #ccc;
+    }
+
+    .newsletter {
+      background: var(--primary-color-light);
+      color: #fff;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    body.dark-mode .newsletter {
+      background: var(--primary-color-dark);
+    }
+
+    .newsletter input[type="email"] {
+      padding: 0.7rem;
+      border-radius: 8px;
+      border: none;
+      margin-right: 1rem;
+      width: 250px;
+    }
+
+    .newsletter button {
+      padding: 0.7rem 1.5rem;
+      background-color: #fff;
+      color: var(--primary-color-light);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    body.dark-mode .newsletter button {
+      color: var(--primary-color-dark);
+    }
+
+    footer {
+      background-color: var(--card-color-light);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    body.dark-mode footer {
+      background-color: var(--card-color-dark);
+      color: #bbb;
+    }
+
+    .social-icons i {
+      margin: 0 10px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #555;
+    }
+
+    body.dark-mode .social-icons i {
+      color: #ccc;
+    }
+
+    .toggle-mode {
+      background: none;
+      border: 1px solid #ccc;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <i class="fa fa-shopping-cart" style="font-size:50px;color:#A2D2FF"></i> ShopEase
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Shop</a>
+      <a href="#">Categories</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <button class="toggle-mode" onclick="toggleMode()"><span style='font-size:50px;'>&#127774;</span><span style='font-size:50px;'>/</span><span style='font-size:50px;'>&#127770;</span></button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to Our Store</h1>
+    <p>Discover amazing products and unbeatable offers</p>
+  </section>
+
+  <section class="section-title">Featured Products</section>
+  <section class="product-grid">
+    <div class="product">
+      <img src="https://images.pexels.com/photos/786003/pexels-photo-786003.jpeg" alt="Shoe" />
+      <h3>Running Shoes</h3>
+      <button>Buy Now</button>
+    </div>
+    <div class="product">
+      <img src="https://www.kolpaper.com/wp-content/uploads/2021/08/hd-laptop-wallpaper-kolpaper-5.jpg" alt="Laptop" />
+      <h3>Smart Laptop</h3>
+      <button>Buy Now</button>
+    </div>
+    <div class="product">
+      <img src="https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/d5a947ec88bb80b349efb9ae9cbff165.jpg" alt="Backpack" />
+      <h3>Stylish Backpack</h3>
+      <button>Buy Now</button>
+    </div>
+    <div class="product">
+      <img src="https://plus.unsplash.com/premium_photo-1679513691474-73102089c117" alt="Headphones" />
+      <h3>Wireless Headphones</h3>
+      <button>Buy Now</button>
+    </div>
+  </section>
+
+  <section class="section-title">Shop by Categories</section>
+  <section class="categories">
+    <div class="category-card">Men</div>
+    <div class="category-card">Women</div>
+    <div class="category-card">Electronics</div>
+    <div class="category-card">Accessories</div>
+  </section>
+
+  <section class="testimonials">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonial">
+      "Best shopping experience ever! Great products and amazing support!"
+    </div>
+    <div class="testimonial">
+      "High quality and fast shipping. Highly recommend this store!"
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <h2>Subscribe to Our Newsletter</h2>
+    <p>Get updates about new products and special offers</p>
+    <input type="email" placeholder="Enter your email">
+    <button>Subscribe</button>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 ShopEase. All rights reserved.</p>
+    <div class="social-icons">
+      <i class="fa fa-facebook"></i>
+      <i class="fa fa-instagram"></i>
+      <i class="fa fa-twitter"></i>
+      <i class="fa fa-linkedin"></i>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>
