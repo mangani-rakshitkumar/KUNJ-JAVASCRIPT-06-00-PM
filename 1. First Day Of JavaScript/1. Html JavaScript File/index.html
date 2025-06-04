@@ -1,0 +1,69 @@
+<!-- # Instructions - 
+
+1. **Create an HTML file** and link a JavaScript file to it.
+2. **Write a script** that displays a **welcome message** when the page loads.
+3. **Declare variables** using `var`, `let`, and `const`, and print them in the console.
+4. **Perform arithmetic operations** (addition, subtraction, multiplication, division) using user input.
+5. **Display results** using `alert()` or inside the webpage using `document.getElementById()`.
+6. **Style your webpage** using basic CSS for a clean and structured look.
+7. **Test your code** in a web browser and fix any errors.
+8. **Save your project** with properly named files and folders.
+9. **Submit your work** as a `.zip` file containing HTML, CSS, and JS files. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELCOME PAGE</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#welcome-message {
+    color: rgb(9, 237, 237);
+}
+
+input[type="number"] {
+    width: 50px;
+    height: 20px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    background-color: grey;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(9, 237, 237);
+}
+
+#result {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(9, 237, 237);
+}
+    </style>
+</head>
+<body>
+    <h1 id="welcome-message"></h1>
+    <h2>Arithmetic Operations</h2>
+    <input id="num1" type="number" placeholder="Number 1">
+    <input id="num2" type="number" placeholder="Number 2">
+    <button id="calculate-btn">Calculate</button>
+    <p id="result"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
