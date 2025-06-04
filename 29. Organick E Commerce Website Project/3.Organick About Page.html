@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="2.Organick Home Page.css">
+    <title>ORGANIC ABOUT PAGE</title>
+    <style>
+        /* Banner */
+        .bannern {
+            width: 100%;
+            height: 360px;
+            background-color: #fff;
+            color: #274C5B;
+            background: url('Organick\ E\ Commerce\ Images/39.Image Photo.png') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-top: 150px;
+        }
+
+        .bannern h1 {
+            font-size: 60px;
+            font-weight: 700;
+            color: #274C5B;
+        }
+
+        /* About Section */
+        .about-section {
+            width: 100%;
+            height: 120vh;
+            background-color: #fff;
+            color: #274C5B;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 60px;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .about-content {
+            max-width: 600px;
+        }
+
+        .about-content h4 {
+            color: #7EB693;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .about-content h2 {
+            font-size: 40px;
+            color: #274C5B;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .about-content p {
+            color: #525C60;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .features {
+            display: flex;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .feature img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .feature-text {
+            font-weight: 600;
+            color: #274C5B;
+            font-size: 20px;
+        }
+
+        .btn-more {
+            width: 190px;
+            height: 70px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            background-color: #274C5B;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-more i {
+            background-color: #325462;
+            color: #fff;
+            border-radius: 50%;
+            padding: 6px;
+            font-size: 14px;
+        }
+
+        .btn-more:hover {
+            background-color: #1f3c4a;
+        }
+
+        /* why-choose-us */
+        .choose-us-section {
+            width: 100%;
+            height: 100vh;
+            background-color: #F9F8F8;
+            color: #274C5B;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 100px;
+        }
+
+        .choose-content {
+            max-width: 550px;
+        }
+
+        .choose-content h4 {
+            color: #7EB693;
+            font-style: italic;
+            font-size: 20px;
+            margin-bottom: 10px;
+
+        }
+
+        .choose-content h2 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .choose-content p {
+            color: #525C60;
+            font-size: 16px;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .choose-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 20px 0;
+            background-color: #EDF6F0;
+            padding: 16px 20px;
+            border-radius: 30px;
+            width: fit-content;
+        }
+
+        .choose-feature img {
+            width: 20px;
+            height: 20px;
+            margin-top: 4px;
+        }
+
+        .choose-feature .text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .choose-feature .title {
+            font-weight: 600;
+            font-size: 20px;
+            color: #274C5B;
+            margin-bottom: 4px;
+        }
+
+        .choose-image img {
+            max-width: 530px;
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .cards-box {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            height: 100%;
+            height: 350px;
+            background-color: #F9F8F8;
+        }
+
+        .card-box {
+            background-color: #fff;
+            border-radius: 20px;
+            width: 150px;
+            height: 200px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            gap: 1px;
+        }
+
+        .card-box img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .card-box h4 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .card-box p {
+            font-size: 14px;
+            color: #525C60;
+        }
+
+        /* team-section  */
+        .team-section {
+            width: 100%;
+            height: 150vh;
+            padding: 90px 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .team-card {
+            background-color: var(--light);
+            border-radius: 30px;
+            overflow: hidden;
+            text-align: start;
+            transition: var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-image {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-info {
+            padding: 30px;
+        }
+
+        .team-name {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .team-position {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .team-social {
+            display: flex;
+            justify-content: end;
+            gap: 10px;
+        }
+
+        .team-social-link {
+            width: 34px;
+            height: 34px;
+            background-color: #deede2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .team-social-link:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Offer for you */
+        .offer-section {
+            width: 100%;
+            height: 100vh;
+            background-color: #1b3c47;
+            color: #ffffff;
+            padding: 60px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .offer-section h4 {
+            color: #7EB693;
+            font-style: italic;
+            font-size: 20px;
+        }
+
+        .offer-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 40px;
+        }
+
+        .offer-grid {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .offer-card {
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 30px 20px;
+            width: 300px;
+            height: 300px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid gray;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .offer-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .offer-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .offer-card p {
+            margin-top: 15px;
+            font-weight: 500;
+            font-size: 16px;
+            color: #274C5B;
+        }
+    </style>
+</head>
+<body>
+    <div class="Navbar">
+        <div class="AA">
+            <a href="1.Organick Header Page.html"><img src="Organick E Commerce Images/1.Image Logo.svg"
+                    alt="Organick Logo" /></a>
+        </div>
+
+        <div class="BB">
+            <a href="2.Organick Home Page.html">Home</a>
+            <a href="#about">About</a>
+            <div class="pages-dropdown-wrapper" onclick="toggleDropdown(event)">
+                <a href="#pages">Pages</a>
+                <i class="ri-arrow-down-s-line pages-icon"></i>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#">Page 1</a>
+                    <a href="#">Page 2</a>
+                </div>
+            </div>
+            <a href="4.Organick Shop Page.html">Shop</a>
+            <a href="#projects">Projects</a>
+            <a href="#news">News</a>
+        </div>
+
+        <div class="CC">
+            <div class="search-container">
+                <input type="text" placeholder="Search" />
+                <div class="search-btn">
+                    <i class="ri-search-line"></i>
+                </div>
+            </div>
+            <a href="#" class="cart-link">
+                <div class="cart-box">
+                    <div class="cart-icon"><i class="ri-shopping-cart-line"></i></div>
+                    <div class="cart-text">Cart (0)</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Banner -->
+    <section class="bannern">
+        <img src="Organick E Commerce Images/40.Image Pattern.png" alt=""
+            style="position: absolute; top: 30px; left: 550px; width: 120px; height: 120px;">
+        <img src="Organick E Commerce Images/41.Image Pattern.png" alt=""
+            style="position: absolute; top: 179px; left: 150px; width: 400px; height: 180px;">
+        <img src="Organick E Commerce Images/42.Image Pattern.png" alt=""
+            style="position: absolute; left: 550px; bottom: 50px; width: 80px; height: 80px;">
+        <img src="Organick E Commerce Images/43.Image Pattern.png" alt=""
+            style="position: absolute; left: 720px; bottom: 10px; width: 120px; height: 100px;">
+        <img src="Organick E Commerce Images/44.Image Pattern.png" alt=""
+            style="position: absolute; top: 5px; left: 950px; width: 100px; height: 100px;">
+        <h1>About Us</h1>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-image">
+            <img src="Organick E Commerce Images\45.Image Photo.png" alt="Salad Bowl">
+        </div>
+
+        <div class="about-content">
+            <h4>About Us</h4>
+            <h2>We do Creative<br>Things for Success</h2>
+            <p>Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's
+                standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+            <p>Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's
+                standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+
+            <div class="features">
+                <div class="feature">
+                    <img src="Organick E Commerce Images\46.Image Icon.svg" alt="Modern Equipment">
+                    <span class="feature-text">Modern Agriculture<br>Equipment</span>
+                </div>
+                <div class="feature">
+                    <img src="Organick E Commerce Images\47.Image Icon.svg" alt="No Hormones">
+                    <span class="feature-text">No growth<br>hormones are used</span>
+                </div>
+            </div>
+            <a href="#">
+                <button class="btn-more">Explore More<i class="ri-arrow-right-line"></i></button>
+            </a>
+        </div>
+    </section>
+
+    <!-- why-choose-us -->
+    <section class="choose-us-section">
+        <div class="choose-content">
+            <h4>Why Choose us?</h4>
+            <h2>We do not buy from the open market & traders.</h2>
+            <p>Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's
+                standard the 1500s, when an unknown</p>
+
+            <div class="choose-feature">
+                <img src="Organick E Commerce Images\48.Image Icon.png" alt="Check Icon">
+                <div class="text">
+                    <span class="title">100% Natural Product</span>
+                    <span>Simply dummy text of the printing and typesetting industry Lorem Ipsum</span>
+                </div>
+            </div>
+
+            <div class="choose-feature">
+                <img src="Organick E Commerce Images\48.Image Icon.png" alt="Check Icon">
+                <div class="text">
+                    <span class="title">Increases resistance</span>
+                    <span>Filling, and temptingly healthy, our Biona Organic Granola with Wild Berries is just the
+                        thing</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="choose-image">
+            <img src="Organick E Commerce Images\49.Image Photo.jpg" alt="Green Food">
+        </div>
+    </section>
+
+    <section class="cards-box">
+        <div class="card-box">
+            <img src="Organick E Commerce Images\50.Image Icon.png" alt="Return">
+            <h4>Return Policy</h4>
+            <p>Simply dummy text of the printintypesetting industry.</p>
+        </div>
+        <div class="card-box">
+            <img src="Organick E Commerce Images\51.Image Icon.png" alt="Fresh">
+            <h4>100% Fresh</h4>
+            <p>Simply dummy text of the printintypesetting industry.</p>
+        </div>
+        <div class="card-box">
+            <img src="Organick E Commerce Images\52.Image Icon.png" alt="Support">
+            <h4>Support 24/7</h4>
+            <p>Simply dummy text of the printintypesetting industry.</p>
+        </div>
+        <div class="card-box">
+            <img src="Organick E Commerce Images\53.Image Icon.png" alt="Payment">
+            <h4>Secured Payment</h4>
+            <p>Simply dummy text of the printintypesetting industry.</p>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <p class="section-subtitle text-center">Team</p>
+            <h2 class="section-title text-center">Our Organic Experts</h2>
+            <p class="text-center" style="max-width: 800px; margin: 0 auto 40px;">
+                Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                dummy text ever since the 1500s, when an unknown printer took a galley.
+            </p>
+
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="Organick E Commerce Images\54.Image Photo.jpg" alt="Giovani Bacardo">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Giovani Bacardo</h3>
+                        <p class="team-position">Farmer</p>
+                        <div class="team-social">
+                            <a href="https://instagram.com" class="team-social-link"><i
+                                    class="fa-brands fa-instagram"></i></a>
+                            <a href="https://facebook.com" class="team-social-link"><i
+                                    class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://twitter.com" class="team-social-link"><i
+                                    class="fa-brands fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="Organick E Commerce Images\55.Image Photo.jpg" alt="Marianne Loreno">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Marianne Loreno</h3>
+                        <p class="team-position">Designer</p>
+                        <div class="team-social">
+                            <a href="https://instagram.com" class="team-social-link"><i
+                                    class="fa-brands fa-instagram"></i></a>
+                            <a href="https://facebook.com" class="team-social-link"><i
+                                    class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://twitter.com" class="team-social-link"><i
+                                    class="fa-brands fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="Organick E Commerce Images\56.Image Photo.jpg" alt="Riga Pelore">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Riga Pelore</h3>
+                        <p class="team-position">Farmer</p>
+                        <div class="team-social">
+                            <a href="https://instagram.com" class="team-social-link"><i
+                                    class="fa-brands fa-instagram"></i></a>
+                            <a href="https://facebook.com" class="team-social-link"><i
+                                    class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://twitter.com" class="team-social-link"><i
+                                    class="fa-brands fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offer for you -->
+    <section class="offer-section">
+        <h4>About Us</h4>
+        <h2>What We Offer for You</h2>
+
+        <div class="offer-grid">
+            <div class="offer-card">
+                <img src="Organick E Commerce Images\57.Image Photo.jpg" alt="Spicy">
+                <p>Spicy</p>
+            </div>
+            <div class="offer-card">
+                <img src="Organick E Commerce Images\58.Image Photo.jpg" alt="Nuts & Feeds">
+                <p>Nuts & Feeds</p>
+            </div>
+            <div class="offer-card">
+                <img src="Organick E Commerce Images\59.Image Photo.jpg" alt="Fruits">
+                <p>Fruits</p>
+            </div>
+            <div class="offer-card">
+                <img src="Organick E Commerce Images\60.Image Photo.jpg" alt="Vegetable">
+                <p>Vegetable</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Section -->
+    <section class="subscribe-section">
+        <div class="subscribe-text">
+            Subscribe to<br />Our Newsletter
+        </div>
+        <form class="subscribe-form" onsubmit="return validateEmail()">
+            <input type="email" id="emailInput" placeholder="Your Email Address" required />
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-column left">
+            <h4>Contact Us</h4>
+            <p><strong>Email:</strong><br>needhelp@Organia.com</p>
+            <p><strong>Phone:</strong><br>666 888 888</p>
+            <p><strong>Address:</strong><br>88 road, borklyn street, USA</p>
+        </div>
+
+        <div class="footer-divider divider1"></div>
+
+        <div class="footer-column center">
+            <img src="Organick E Commerce Images/1.Image Logo.svg" alt=""
+                style="padding-left: 40px; padding-bottom: 30px; width: 240px; height: 100px;  ">
+            <p>Simply dummy text of the printing and typesetting industry. Lorem Ipsum simply dummy text of the printing
+            </p>
+            <div class="social-icons">
+                <a href="https://instagram.com" target="_blank"><i class="ri-instagram-line"></i></a>
+                <a href="https://facebook.com" target="_blank"><i class="ri-facebook-fill"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="ri-twitter-line"></i></a>
+                <a href="https://pinterest.com" target="_blank"><i class="ri-pinterest-line"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-divider divider2"></div>
+
+        <div class="footer-column right">
+            <h4>Utility Pages</h4>
+            <p>Style Guide</p>
+            <p>404 Not Found</p>
+            <p>Password Protected</p>
+            <p>Licenses</p>
+            <p>Changelog</p>
+        </div>
+    </footer>
+
+    <div class="footer-bottom-line"></div>
+    <div class="footer-bottom">
+        Copyright &copy; <strong>Organick</strong> | Designed by <strong>VictorFlow</strong> Templates - Powered by
+        <strong>Webflow</strong>
+    </div>
+
+    <script>
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById("dropdownMenu");
+            dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
+        }
+
+        document.addEventListener("click", () => {
+            const dropdown = document.getElementById("dropdownMenu");
+            dropdown.style.display = "none";
+        });
+
+        function validateEmail() {
+            const emailInput = document.getElementById('emailInput').value;
+            if (!emailInput.includes('@')) {
+                alert("Please enter a valid email address including '@'");
+                return false;
+            }
+            alert("Subscribed successfully!");
+            return true;
+        }
+    </script>
+</body>
+</html>

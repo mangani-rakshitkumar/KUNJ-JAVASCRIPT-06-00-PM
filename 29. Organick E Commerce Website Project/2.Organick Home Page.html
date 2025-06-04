@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="2.Organick Home Page.css">
+    <title>ORGANIC HOME PAGE</title>
+</head>
+<body>
+    <div class="Navbar">
+        <div class="AA">
+            <a href="1.Organick Header Page.html"><img src="Organick E Commerce Images/1.Image Logo.svg"
+                    alt="Organick Logo" /></a>
+        </div>
+
+        <div class="BB">
+            <a href="#home">Home</a>
+            <a href="3.Organick About Page.html">About</a>
+            <div class="pages-dropdown-wrapper" onclick="toggleDropdown(event)">
+                <a href="#pages">Pages</a>
+                <i class="ri-arrow-down-s-line pages-icon"></i>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#">Page 1</a>
+                    <a href="#">Page 2</a>
+                </div>
+            </div>
+            <a href="4.Organick Shop Page.html">Shop</a>
+            <a href="#projects">Projects</a>
+            <a href="#news">News</a>
+        </div>
+
+        <div class="CC">
+            <div class="search-container">
+                <input type="text" placeholder="Search" />
+                <div class="search-btn">
+                    <i class="ri-search-line"></i>
+                </div>
+            </div>
+            <a href="#" class="cart-link">
+                <div class="cart-box">
+                    <div class="cart-icon"><i class="ri-shopping-cart-line"></i></div>
+                    <div class="cart-text">Cart (0)</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="Header">
+        <img src="Organick E Commerce Images/3.Image Group.png"
+            style="top: -10px; left: 0px; width: 180px; height: 180px;">
+        <img src="Organick E Commerce Images/4.Image Group.png"
+            style="top: 160px; left: 60px; width: 80px; height: 80px;">
+        <img src="Organick E Commerce Images/5.Image Group.png"
+            style="top: 450px; left: 0px; width: 200px; height: 250px;">
+        <img src="Organick E Commerce Images/6.Image Group.png"
+            style="top: 60px; left: 600px; width: 150px; height: 150px;">
+        <img src="Organick E Commerce Images/7.Image Group.png"
+            style="right: 130px; top: 20px; width: 120px; height: 120px;">
+        <img src="Organick E Commerce Images/8.Image Group.png"
+            style="right: 0px; top: 0px; width: 180px; height: 250px;">
+        <img src="Organick E Commerce Images/9.Image Group.png"
+            style="right: 0px; bottom: 10px; width: 170px; height: 190px;">
+        <img src="Organick E Commerce Images/10.Image Group.png"
+            style="right: 45px; bottom: 0px; width: 100px; height: 150px;">
+        <img src="Organick E Commerce Images/6.Image Group.png" alt=""
+            style="position: absolute; top: 400px; left: 500px;">
+
+        <div class="header-content">
+            <p>100% Natural Food</p>
+            <h1>Choose the best</h1>
+            <h1>healthier way</h1>
+            <h1>of life</h1>
+            <a href="#">
+                <button class="custom-button">Explore Now <i class="ri-arrow-right-line"></i></button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Promo Section -->
+    <div class="promo-section">
+        <div class="promo-card left">
+            <div class="promo-text">
+                <p>Natural!!</p>
+                <h2 style="color: white;">Get Garden<br>Fresh Fruits</h2>
+            </div>
+        </div>
+        <div class="promo-card right">
+            <div class="promo-text">
+                <p style="color: #1b5e20;">Offer!!</p>
+                <h2 style="color: #1b5e20;">Get 10% off<br>on Vegetables</h2>
+            </div>
+        </div>
+    </div>
+
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="Organick E Commerce Images/13.Image Photo.png" alt="Citrus Fruits">
+            </div>
+            <div class="about-content">
+                <h4>About Us</h4>
+                <h2>We Believe in Working<br>Accredited Farmers</h2>
+                <p>
+                    Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's
+                    standard
+                    dummy text ever since the 1500s, when an unknown printer took a galley.
+                </p>
+
+                <div class="about-features">
+                    <div class="feature-box">
+                        <img src="Organick E Commerce Images/14.Image Icon.png" alt="Organic" />
+                        <div>
+                            <h3>Organic Foods Only</h3>
+                            <p>Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <img src="Organick E Commerce Images/15.Image Icon.png" alt="Quality" />
+                        <div>
+                            <h3>Quality Standards</h3>
+                            <p>Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#">
+                    <button class="shop-btn">Shop Now <i class="ri-arrow-right-line"></i></button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-subtitle">Categories</span>
+                <h2 class="section-title">Our Products</h2>
+            </div>
+
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-badge">Vegetable</div>
+                    <div class="product-image">
+                        <img src="Organick E Commerce Images/16.Image Photo.png" alt="Broccoli">
+                    </div>
+                    <h3 class="product-title">Calabrese Broccoli</h3>
+                    <div class="product-price">
+                        <span class="price-old">$20.00</span>
+                        <span class="price-current">$13.00</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-badge">Fresh</div>
+                    <div class="product-image">
+                        <img src="Organick E Commerce Images/17.Image Photo.png" alt="Banana">
+                    </div>
+                    <h3 class="product-title">Fresh Banana Fruits</h3>
+                    <div class="product-price">
+                        <span class="price-old">$20.00</span>
+                        <span class="price-current">$14.00</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-badge">Millets</div>
+                    <div class="product-image">
+                        <img src="Organick E Commerce Images/18.Image Photo.png" alt="White Nuts">
+                    </div>
+                    <h3 class="product-title">White Nuts</h3>
+                    <div class="product-price">
+                        <span class="price-old">$20.00</span>
+                        <span class="price-current">$15.00</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-badge">Vegetable</div>
+                    <div class="product-image">
+                        <img src="Organick E Commerce Images/19.Image Photo.png" alt="Tomato">
+                    </div>
+                    <h3 class="product-title">Vegan Red Tomato</h3>
+                    <div class="product-price">
+                        <span class="price-old">$20.00</span>
+                        <span class="price-current">$17.00</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="product-badge">Health</div>
+                    <div class="product-image">
+                        <img src="Organick E Commerce Images/20.Image Photo.png" alt="Mung Bean">
+                    </div>
+                    <h3 class="product-title">Mung Bean</h3>
+                    <div class="product-price">
+                        <span class="price-old">$20.00</span>
+                        <span class="price-current">$11.00</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-badge">Nuts</div>
+                    <div class="product-image">
+                        <img src="Organick E Commerce Images/21.Image Photo.png" alt="Brown Hazelnut">
+                    </div>
+                    <h3 class="product-title">Brown Hazelnut</h3>
+                    <div class="product-price">
+                        <span class="price-old">$20.00</span>
+                        <span class="price-current">$12.00</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card">
+                    <div class="product-badge">Fresh</div>
+                    <div class="product-image">
+                        <img src="Organick E Commerce Images/22.Image Photo.png" alt="Eggs">
+                    </div>
+                    <h3 class="product-title">Eggs</h3>
+                    <div class="product-price">
+                        <span class="price-old">$20.00</span>
+                        <span class="price-current">$17.00</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card">
+                    <div class="product-badge">Fresh</div>
+                    <div class="product-image">
+                        <img src="Organick E Commerce Images/23.Image Photo.png" alt="Zelco Suji Elaichi Rusk">
+                    </div>
+                    <h3 class="product-title">Zelco Suji Elaichi Rusk</h3>
+                    <div class="product-price">
+                        <span class="price-old">$20.00</span>
+                        <span class="price-current">$15.00</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="#">
+                    <button class="load-btn">Load More<i class="ri-arrow-right-line"></i></button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial-section">
+        <img src="Organick E Commerce Images/25.Image Photo.png" alt=""
+            style="position: absolute; top: 3378px; width: 300px; height: 900px;">
+
+        <img src="Organick E Commerce Images/26.Image Photo.png" alt=""
+            style="position: absolute; top: 3378px; right: 0px; width: 300px; height: 900px;">
+        <div class="container">
+            <div class="testimonial-content">
+                <span class="section-subtitle">Testimonial</span>
+                <h2 class="section-title">What Our Customers Saying?</h2>
+
+                <div class="customer-avatar">
+                    <img src="Organick E Commerce Images/24.Image Photo.jpg" alt="Sara Taylor">
+                </div>
+
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+
+                <p class="testimonial-text">
+                    Simply dummy text of the printing and typesetting industry. Lorem Ipsum simply dummy text of the
+                    printing and
+                    typesetting industry. Lorem Ipsum has been.
+                </p>
+
+                <div class="customer-info" style="border-bottom: 1px solid gray; padding-bottom: 50px;">
+                    <h4>Sara Taylor</h4>
+                    <p>Consumer</p>
+                </div>
+            </div>
+
+            <div class="statistics">
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Organic</div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-number">285</div>
+                    <div class="stat-label">Active Product</div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-number">350+</div>
+                    <div class="stat-label">Organic Orchards</div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Years of Farming</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offer Section -->
+    <section class="offer-section">
+        <div class="container">
+            <div class="text-center">
+                <span class="offerqq">Offer</span>
+                <h2 class="offerww">We Offer Organic For You</h2>
+            </div>
+
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-badge">Vegetable</div>
+                    <div class="product-image">
+                        <img src="Organick E Commerce Images/27.Image Photo.png" alt="Broccoli">
+                    </div>
+                    <h3 class="product-title">Calabrese Broccoli</h3>
+                    <div class="product-price">
+                        <span class="price-old">$20.00</span>
+                        <span class="price-current">$13.00</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-badge">Fresh</div>
+                    <div class="product-image">
+                        <img src="Organick E Commerce Images/28.Image Photo.png" alt="Banana">
+                    </div>
+                    <h3 class="product-title">Fresh Banana Fruits</h3>
+                    <div class="product-price">
+                        <span class="price-old">$20.00</span>
+                        <span class="price-current">$14.00</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-badge">Millets</div>
+                    <div class="product-image">
+                        <img src="Organick E Commerce Images/29.Image Photo.png" alt="White Nuts">
+                    </div>
+                    <h3 class="product-title">White Nuts</h3>
+                    <div class="product-price">
+                        <span class="price-old">$20.00</span>
+                        <span class="price-current">$15.00</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-badge">Vegetable</div>
+                    <div class="product-image">
+                        <img src="Organick E Commerce Images/30.Image Photo.png" alt="Tomato">
+                    </div>
+                    <h3 class="product-title">Vegan Red Tomato</h3>
+                    <div class="product-price">
+                        <span class="price-old">$20.00</span>
+                        <span class="price-current">$17.00</span>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <button class="view-button">View All Product<i class="ri-arrow-right-line"></i></button>
+            </a>
+        </div>
+    </section>
+
+    <!-- Eco Section -->
+    <section class="eco-section">
+        <div class="container">
+            <div class="eco-content">
+                <div class="eco-image">
+                    <img src="Organick E Commerce Images/31.Image Photo.jpg" alt="Eco Friendly">
+                </div>
+
+                <div class="eco-text">
+                    <span class="section-subtitle">Eco Friendly</span>
+                    <h2 class="section-title">Econis is a Friendly Organic Store</h2>
+
+                    <div class="eco-features">
+                        <div class="eco-feature">
+                            <h4>Start with Our Company First</h4>
+                            <p>
+                                Sed ut perspiciatis unde omnis iste natus error sit voluptat accusantium doloremque
+                                laudantium. Sed ut
+                                perspiciatis.
+                            </p>
+                        </div>
+
+                        <div class="eco-feature">
+                            <h4>Learn How to Grow Yourself</h4>
+                            <p>
+                                Sed ut perspiciatis unde omnis iste natus error sit voluptat accusantium doloremque
+                                laudantium. Sed ut
+                                perspiciatis.
+                            </p>
+                        </div>
+
+                        <div class="eco-feature">
+                            <h4>Farming Strategies of Today</h4>
+                            <p>
+                                Sed ut perspiciatis unde omnis iste natus error sit voluptat accusantium doloremque
+                                laudantium. Sed ut
+                                perspiciatis.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- card-container -->
+    <div class="card-container">
+        <div class="card">
+            <img src="Organick E Commerce Images/32.Image Photo.jpg" alt="Organic Juice">
+            <a href="#">Organic Juice</a>
+        </div>
+
+        <div class="card">
+            <img src="Organick E Commerce Images/33.Image Photo.jpg" alt="Organic Food">
+            <a href="#">Organic Food</a>
+        </div>
+
+        <div class="card">
+            <img src="Organick E Commerce Images/34.Image Photo.jpg" alt="Nuts Cookies">
+            <a href="#">Nuts Cookies</a>
+        </div>
+    </div>
+
+    <!-- news-section -->
+    <section class="news-section">
+        <div class="news-header">
+            <div>
+                <h4>News</h4>
+                <h2>Discover weekly content about<br>organic food, & more</h2>
+            </div>
+            <a href="#">
+                <button class="btn-primary">More News<i class="ri-arrow-right-line"></i></button>
+            </a>
+
+        </div>
+
+        <div class="news-cards">
+            <!-- Card 1 -->
+
+            <div class="news-card card-1">
+                <div class="news-date">
+                    <span>25</span>
+                    <small>Nov</small>
+                </div>
+                <div class="news-content">
+                    <div class="news-author">
+                        <span><img src="Organick E Commerce Images/37.Image Vector.png" alt="">By Rachi Card</span>
+                    </div>
+                    <div class="news-title">The Benefits of Vitamin D & How to Get It</div>
+                    <div class="news-desc">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</div>
+                    <a href="#">
+                        <button class="btn-secondary">Read More <i class="ri-arrow-right-line"></i></button>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="news-card card-2">
+                <div class="news-date">
+                    <span>25</span>
+                    <small>Nov</small>
+                </div>
+                <div class="news-content">
+                    <div class="news-author">
+                        <span><img src="Organick E Commerce Images/37.Image Vector.png" alt="">By Rachi Card</span>
+                    </div>
+                    <div class="news-title">Our Favourite Summertime Tomato</div>
+                    <div class="news-desc">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</div>
+                    <a href="#">
+                        <button class="btn-secondary">Read More <i class="ri-arrow-right-line"></i></button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Section -->
+    <section class="subscribe-section">
+        <div class="subscribe-text">
+            Subscribe to<br />Our Newsletter
+        </div>
+        <form class="subscribe-form" onsubmit="return validateEmail()">
+            <input type="email" id="emailInput" placeholder="Your Email Address" required />
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-column left">
+            <h4>Contact Us</h4>
+            <p><strong>Email:</strong><br>needhelp@Organia.com</p>
+            <p><strong>Phone:</strong><br>666 888 888</p>
+            <p><strong>Address:</strong><br>88 road, borklyn street, USA</p>
+        </div>
+
+        <div class="footer-divider divider1"></div>
+
+        <div class="footer-column center">
+            <img src="Organick E Commerce Images/1.Image Logo.svg" alt=""
+                style="padding-left: 40px; padding-bottom: 30px; width: 240px; height: 100px;  ">
+            <p>Simply dummy text of the printing and typesetting industry. Lorem Ipsum simply dummy text of the printing
+            </p>
+            <div class="social-icons">
+                <a href="https://instagram.com" target="_blank"><i class="ri-instagram-line"></i></a>
+                <a href="https://facebook.com" target="_blank"><i class="ri-facebook-fill"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="ri-twitter-line"></i></a>
+                <a href="https://pinterest.com" target="_blank"><i class="ri-pinterest-line"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-divider divider2"></div>
+
+        <div class="footer-column right">
+            <h4>Utility Pages</h4>
+            <p>Style Guide</p>
+            <p>404 Not Found</p>
+            <p>Password Protected</p>
+            <p>Licenses</p>
+            <p>Changelog</p>
+        </div>
+    </footer>
+
+    <div class="footer-bottom-line"></div>
+    <div class="footer-bottom">
+        Copyright &copy; <strong>Organick</strong> | Designed by <strong>VictorFlow</strong> Templates - Powered by
+        <strong>Webflow</strong>
+    </div>
+
+    <script>
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById("dropdownMenu");
+            dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
+        }
+
+        document.addEventListener("click", () => {
+            const dropdown = document.getElementById("dropdownMenu");
+            dropdown.style.display = "none";
+        });
+
+        function validateEmail() {
+            const emailInput = document.getElementById('emailInput').value;
+            if (!emailInput.includes('@')) {
+                alert("Please enter a valid email address including '@'");
+                return false;
+            }
+            alert("Subscribed successfully!");
+            return true;
+        }
+    </script>
+</body>
+</html>

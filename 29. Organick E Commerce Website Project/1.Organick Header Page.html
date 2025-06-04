@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+    integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>ORGANIC E COMMERCE</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+    }
+
+    .Navbar {
+      width: 100%;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      position: fixed;
+      z-index: 2;
+    }
+
+    .AA {
+      width: 30%;
+      height: 150px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding-left: 40px;
+    }
+
+    .AA img {
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .BB {
+      width: 40%;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      position: relative;
+    }
+
+    .BB a {
+      position: relative;
+      text-decoration: none;
+      color: #274C5B;
+      font-weight: 600;
+      font-size: 20px;
+      transition: color 0.3s;
+    }
+
+    .BB a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 3px;
+      background-color: #7fb069;
+      transition: width 0.3s ease;
+    }
+
+    .BB a:hover::after {
+      width: 100%;
+    }
+
+    .pages-dropdown-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .pages-icon {
+      font-size: 18px;
+      margin-left: 5px;
+      color: #274C5B;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-top: 10px;
+      padding: 10px 0;
+      display: none;
+      flex-direction: column;
+      min-width: 150px;
+      z-index: 5;
+    }
+
+    .dropdown-menu a {
+      padding: 10px 20px;
+      color: #274C5B;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .CC {
+      width: 30%;
+      height: 150px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 20px;
+      padding-right: 40px;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      background-color: #fafafa;
+      border-radius: 50px;
+      padding-left: 20px;
+      height: 60px;
+      min-width: 250px;
+    }
+
+    .search-container input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 16px;
+      width: 160px;
+    }
+
+    .search-btn {
+      width: 50px;
+      height: 50px;
+      background-color: #7fb069;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 5px;
+      cursor: pointer;
+    }
+
+    .search-btn i {
+      color: #fff;
+      font-size: 20px;
+    }
+
+    .cart-link {
+      text-decoration: none;
+    }
+
+    .cart-box {
+      display: flex;
+      align-items: center;
+      padding: 5px 15px 5px 5px;
+      border: 1px solid #ccc;
+      border-radius: 50px;
+      background-color: white;
+      gap: 10px;
+      transition: box-shadow 0.3s;
+    }
+
+    .cart-icon {
+      width: 50px;
+      height: 50px;
+      background-color: #274C5B;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .cart-icon i {
+      color: #fff;
+      font-size: 22px;
+    }
+
+    .cart-text {
+      font-size: 18px;
+      color: #274C5B;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .Header {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      background-image: url('Organick\ E\ Commerce\ Images/2.Image Home Page.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+    }
+
+    .Header img {
+      position: relative;
+    }
+
+    .header-content {
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      transform: translateY(-50%);
+      max-width: 600px;
+    }
+
+    .header-content p {
+      font-size: 22px;
+      color: #7fb069;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .header-content h1 {
+      font-size: 48px;
+      line-height: 1.2;
+      color: #274C5B;
+    }
+
+    .custom-button {
+      width: 190px;
+      height: 70px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 30px;
+      padding: 14px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      background-color: #F9D949;
+      color: #274C5B;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .custom-button i {
+      background-color: #274C5B;
+      color: #fff;
+      border-radius: 50%;
+      padding: 6px;
+      font-size: 14px;
+    }
+
+    .custom-button:hover {
+      background-color: #f3c738;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="Navbar">
+    <div class="AA">
+      <a href="#">
+        <img src="Organick E Commerce Images/1.Image Logo.svg" alt="Organick Logo" />
+      </a>
+    </div>
+
+    <div class="BB">
+      <a href="2.Organick Home Page.html">Home</a>
+      <a href="3.Organick About Page.html">About</a>
+      <div class="pages-dropdown-wrapper" onclick="toggleDropdown(event)">
+        <a href="#pages">Pages</a>
+        <i class="ri-arrow-down-s-line pages-icon"></i>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="#">Page 1</a>
+          <a href="#">Page 2</a>
+        </div>
+      </div>
+
+      <a href="4.Organick Shop Page.html">Shop</a>
+      <a href="#projects">Projects</a>
+      <a href="#news">News</a>
+    </div>
+
+    <div class="CC">
+      <div class="search-container">
+        <input type="text" placeholder="Search" />
+        <div class="search-btn">
+          <i class="ri-search-line"></i>
+        </div>
+      </div>
+
+      <a href="#" class="cart-link">
+        <div class="cart-box">
+          <div class="cart-icon">
+            <i class="ri-shopping-cart-line"></i>
+          </div>
+          <div class="cart-text">Cart (0)</div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="Header">
+    <img src="Organick E Commerce Images/3.Image Group.png" alt=""
+      style="position: absolute; top: -10px; left: 0px; width: 180px; height: 180px;">
+    <img src="Organick E Commerce Images/4.Image Group.png" alt=""
+      style="position: absolute; top: 160px; left: 60px; width: 80px; height: 80px;">
+    <img src="Organick E Commerce Images/6.Image Group.png" alt=""
+      style="position: absolute; top: 90px; left: 600px; width: 150px; height: 150px;">
+    <img src="Organick E Commerce Images/7.Image Group.png" alt=""
+      style="position: absolute; right: 130px; top: 20px; width: 120px; height: 120px;">
+    <img src="Organick E Commerce Images/8.Image Group.png" alt=""
+      style="position: absolute; right: 0px; top: 0px; width: 180px; height: 250px;">
+    <img src="Organick E Commerce Images/9.Image Group.png" alt=""
+      style="position: absolute; right: 0px; bottom: 10px; width: 170px; height: 190px;">
+    <img src="Organick E Commerce Images/10.Image Group.png" alt=""
+      style="position: absolute; right: 45px; bottom: 0px; width: 100px; height: 150px;">
+    <img src="Organick E Commerce Images/6.Image Group.png" alt="" style="position: absolute; top: 400px; left: 400px;">
+    <img src="Organick E Commerce Images/5.Image Group.png" alt=""
+      style="position: absolute; top: 450px; width: 200px;">
+    <img src="Organick E Commerce Images/6.Image Group.png" alt=""
+      style="position: absolute; top: 520px; left: 600px; width: 150px;">
+    <div class="header-content">
+      <p>100% Natural Food</p>
+      <h1>Choose the best</h1>
+      <h1>healthier way</h1>
+      <h1>of life</h1>
+      <a href="#">
+        <button class="custom-button">
+          Explore Now <i class="ri-arrow-right-line"></i>
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function toggleDropdown(event) {
+      event.stopPropagation();
+      const dropdown = document.getElementById("dropdownMenu");
+      dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
+    }
+    document.addEventListener("click", () => {
+      const dropdown = document.getElementById("dropdownMenu");
+      dropdown.style.display = "none";
+    });
+  </script>
+</body>
+</html>

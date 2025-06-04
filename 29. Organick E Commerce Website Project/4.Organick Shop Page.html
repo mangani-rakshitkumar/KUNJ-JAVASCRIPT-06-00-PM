@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="2.Organick Home Page.css">
+    <title>ORGANIC SHOP PAGE</title>
+    <style>
+        /* Banner */
+        .bannern {
+            width: 100%;
+            height: 360px;
+            background-color: #fff;
+            color: #274C5B;
+            background: url('Organick\ E\ Commerce\ Images/61.Image Photo.png') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-top: 150px;
+        }
+
+        .bannern h1 {
+            font-size: 60px;
+            font-weight: 700;
+            color: #274C5B;
+        }
+
+        /* container */
+        .container {
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            padding-top: 100px;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* Product Card */
+        .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .product-image img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-category {
+            display: inline-block;
+            background-color: #1E4E5F;
+            color: #EFF6F1;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1E4E5F;
+            margin-bottom: 10px;
+        }
+
+        .product-price-rating {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .old-price {
+            color: #aaa;
+            text-decoration: line-through;
+            font-size: 14px;
+        }
+
+        .current-price {
+            color: #1E4E5F;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .rating {
+            color: #FFD700;
+            font-size: 12px;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="Navbar">
+        <div class="AA">
+            <a href="1.Organick Header Page.html"><img src="Organick E Commerce Images/1.Image Logo.svg"
+                    alt="Organick Logo" /></a>
+        </div>
+
+        <div class="BB">
+            <a href="2.Organick Home Page.html">Home</a>
+            <a href="3.Organick About Page.html">About</a>
+            <div class="pages-dropdown-wrapper" onclick="toggleDropdown(event)">
+                <a href="#pages">Pages</a>
+                <i class="ri-arrow-down-s-line pages-icon"></i>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#">Page 1</a>
+                    <a href="#">Page 2</a>
+                </div>
+            </div>
+            <a href="#shop">Shop</a>
+            <a href="#projects">Projects</a>
+            <a href="#news">News</a>
+        </div>
+
+        <div class="CC">
+            <div class="search-container">
+                <input type="text" placeholder="Search" />
+                <div class="search-btn">
+                    <i class="ri-search-line"></i>
+                </div>
+            </div>
+            <a href="#" class="cart-link">
+                <div class="cart-box">
+                    <div class="cart-icon"><i class="ri-shopping-cart-line"></i></div>
+                    <div class="cart-text">Cart (0)</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Banner -->
+    <section class="bannern">
+        <img src="Organick E Commerce Images/40.Image Pattern.png" alt=""
+            style="position: absolute; top: 30px; left: 550px; width: 120px; height: 120px;">
+        <img src="Organick E Commerce Images/42.Image Pattern.png" alt=""
+            style="position: absolute; left: 550px; bottom: 50px; width: 80px; height: 80px;">
+        <img src="Organick E Commerce Images/43.Image Pattern.png" alt=""
+            style="position: absolute; left: 720px; bottom: 10px; width: 120px; height: 100px;">
+        <img src="Organick E Commerce Images/44.Image Pattern.png" alt=""
+            style="position: absolute; top: 5px; left: 950px; width: 100px; height: 100px;">
+        <h1>Shop</h1>
+    </section>
+
+    <!-- container -->
+    <main class="container">
+        <div class="products-grid" id="products-container">
+        </div>
+    </main>
+
+
+    <!-- Subscribe Section -->
+    <section class="subscribe-section">
+        <div class="subscribe-text">
+            Subscribe to<br />Our Newsletter
+        </div>
+        <form class="subscribe-form" onsubmit="return validateEmail()">
+            <input type="email" id="emailInput" placeholder="Your Email Address" required />
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-column left">
+            <h4>Contact Us</h4>
+            <p><strong>Email:</strong><br>needhelp@Organia.com</p>
+            <p><strong>Phone:</strong><br>666 888 888</p>
+            <p><strong>Address:</strong><br>88 road, borklyn street, USA</p>
+        </div>
+
+        <div class="footer-divider divider1"></div>
+
+        <div class="footer-column center">
+            <img src="Organick E Commerce Images/1.Image Logo.svg" alt=""
+                style="padding-left: 40px; padding-bottom: 30px; width: 240px; height: 100px;  ">
+            <p>Simply dummy text of the printing and typesetting industry. Lorem Ipsum simply dummy text of the printing
+            </p>
+            <div class="social-icons">
+                <a href="https://instagram.com" target="_blank"><i class="ri-instagram-line"></i></a>
+                <a href="https://facebook.com" target="_blank"><i class="ri-facebook-fill"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="ri-twitter-line"></i></a>
+                <a href="https://pinterest.com" target="_blank"><i class="ri-pinterest-line"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-divider divider2"></div>
+
+        <div class="footer-column right">
+            <h4>Utility Pages</h4>
+            <p>Style Guide</p>
+            <p>404 Not Found</p>
+            <p>Password Protected</p>
+            <p>Licenses</p>
+            <p>Changelog</p>
+        </div>
+    </footer>
+
+    <div class="footer-bottom-line"></div>
+    <div class="footer-bottom">
+        Copyright &copy; <strong>Organick</strong> | Designed by <strong>VictorFlow</strong> Templates - Powered by
+        <strong>Webflow</strong>
+    </div>
+
+    <script>
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById("dropdownMenu");
+            dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
+        }
+
+        document.addEventListener("click", () => {
+            const dropdown = document.getElementById("dropdownMenu");
+            dropdown.style.display = "none";
+        });
+
+        function validateEmail() {
+            const emailInput = document.getElementById('emailInput').value;
+            if (!emailInput.includes('@')) {
+                alert("Please enter a valid email address including '@'");
+                return false;
+            }
+            alert("Subscribed successfully!");
+            return true;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Product data
+            const products = [
+                {
+                    id: 1,
+                    name: 'Calabrese Broccoli',
+                    category: 'Vegetable',
+                    price: 13.00,
+                    oldPrice: 20.00,
+                    image: 'Organick\ E\ Commerce\ Images/16.Image Photo.png',
+                    rating: 5
+                },
+                {
+                    id: 2,
+                    name: 'Fresh Banana Fruits',
+                    category: 'Fresh',
+                    price: 14.00,
+                    oldPrice: 20.00,
+                    image: 'Organick\ E\ Commerce\ Images/17.Image Photo.png',
+                    rating: 5
+                },
+                {
+                    id: 3,
+                    name: 'White Nuts',
+                    category: 'Millets',
+                    price: 15.00,
+                    oldPrice: 20.00,
+                    image: 'Organick\ E\ Commerce\ Images/18.Image Photo.png',
+                    rating: 5
+                },
+                {
+                    id: 4,
+                    name: 'Vegan Red Tomato',
+                    category: 'Vegetable',
+                    price: 17.00,
+                    oldPrice: 20.00,
+                    image: 'Organick\ E\ Commerce\ Images/19.Image Photo.png',
+                    rating: 5
+                },
+                {
+                    id: 5,
+                    name: 'Mung Bean',
+                    category: 'Health',
+                    price: 11.00,
+                    oldPrice: 20.00,
+                    image: 'Organick\ E\ Commerce\ Images/20.Image Photo.png',
+                    rating: 5
+                },
+                {
+                    id: 6,
+                    name: 'Brown Hazelnut',
+                    category: 'Nuts',
+                    price: 12.00,
+                    oldPrice: 20.00,
+                    image: 'Organick\ E\ Commerce\ Images/21.Image Photo.png',
+                    rating: 5
+                },
+                {
+                    id: 7,
+                    name: 'Eggs',
+                    category: 'Fresh',
+                    price: 17.00,
+                    oldPrice: 20.00,
+                    image: 'Organick\ E\ Commerce\ Images/22.Image Photo.png',
+                    rating: 5
+                },
+                {
+                    id: 8,
+                    name: 'Zelco Suji Elaichi Rusk',
+                    category: 'Food',
+                    price: 15.00,
+                    oldPrice: 20.00,
+                    image: 'Organick\ E\ Commerce\ Images/23.Image Photo.png',
+                    rating: 5
+                },
+                {
+                    id: 9,
+                    name: 'Organic Beans',
+                    category: 'Health',
+                    price: 11.00,
+                    oldPrice: 20.00,
+                    image: 'Organick\ E\ Commerce\ Images/62.Image Photo.png',
+                    rating: 5
+                },
+                {
+                    id: 10,
+                    name: 'White Hazelnut',
+                    category: 'Nuts',
+                    price: 12.00,
+                    oldPrice: 20.00,
+                    image: 'Organick\ E\ Commerce\ Images/63.Image Photo.png',
+                    rating: 5
+                },
+                {
+                    id: 11,
+                    name: 'Fresh Corn',
+                    category: 'Fresh',
+                    price: 17.00,
+                    oldPrice: 20.00,
+                    image: 'Organick\ E\ Commerce\ Images/64.Image Photo.png',
+                    rating: 5
+                },
+                {
+                    id: 12,
+                    name: 'Organic Almonds',
+                    category: 'Food',
+                    price: 15.00,
+                    oldPrice: 20.00,
+                    image: 'Organick\ E\ Commerce\ Images/65.Image Photo.png',
+                    rating: 5
+                },
+            ];
+
+            // Function to render product cards
+            function renderProducts() {
+                const productsContainer = document.getElementById('products-container');
+
+                products.forEach(product => {
+                    // Create stars based on rating
+                    let starsHTML = '';
+                    for (let i = 0; i < 5; i++) {
+                        if (i < product.rating) {
+                            starsHTML += '<i class="fas fa-star"></i>';
+                        } else {
+                            starsHTML += '<i class="far fa-star"></i>';
+                        }
+                    }
+
+                    // Create product card
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    productCard.innerHTML = `
+        <div class="product-image">
+          <img src="${product.image}" alt="${product.name}">
+        </div>
+        <div class="product-info">
+          <span class="product-category">${product.category}</span>
+          <h3 class="product-name">${product.name}</h3>
+          <div class="product-price-rating">
+            <div class="price-container">
+              <span class="old-price">$${product.oldPrice.toFixed(2)}</span>
+              <span class="current-price">$${product.price.toFixed(2)}</span>
+            </div>
+            <div class="rating">${starsHTML}</div>
+          </div>
+        </div>
+      `;
+
+                    // Add click event to redirect to product detail page
+                    productCard.addEventListener('click', () => {
+                        window.location.href = `5.Organick Shop Single Page.html?id=${product.id}`;
+                    });
+
+                    productsContainer.appendChild(productCard);
+                });
+            }
+
+            // Initialize the page
+            renderProducts();
+        });
+    </script>
+</body>
+</html>
