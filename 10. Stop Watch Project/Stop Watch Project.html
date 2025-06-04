@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STOP WATCH PROJECT</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1{
+            color: rgb(9, 237, 237);
+            padding-bottom: 50px;
+        }
+        h2{
+            color: white;
+        }
+        .container{
+            width: 300px;
+            height: 300px;
+            border: transparent;
+            border-radius: 50%;
+            box-shadow: aqua 0px 0px 0px 7px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        .container button{
+            width: 165px;
+            height: 30px;
+            color: white;
+            background-color: gray;
+            border: transparent;
+        }
+        .container button:hover{
+            width: 165px;
+            height: 30px;
+            color: black;
+            background-color: aqua;
+            border: transparent;
+            cursor: pointer;
+            transition-duration: 1.5s;
+        }
+    </style>
+</head>
+<body>
+    <h1>STOP WATCH</h1>
+    <div class="container">
+        <input type="number" placeholder="Enter Time Here..." id="time">
+        <button onclick="startCountdown()">START</button>
+        <h2 id="showtime">00:00</h>
+    </div>
+
+    <script>
+        function startCountdown() {
+            let time = document.getElementById("time").value * 60;
+            let showtime = document.getElementById("showtime");
+            let a = time;
+
+            let intervalId = setInterval(() => {
+                let minutes = Math.floor(a / 60);
+                let seconds = a % 60;
+
+                showtime.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+                a--;
+
+                if (a < 0) {
+                    clearInterval(intervalId);
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
