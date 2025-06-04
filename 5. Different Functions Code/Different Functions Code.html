@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIFFERENT FUNCTIONS CODE</title>
+</head>
+<body>
+    <script>
+        // Normal Function
+        function a(){
+            console.log("Hi");
+        } 
+        a();
+        
+        // Nested Function
+        function b(){
+            console.log("Hello");
+            function c(){
+                console.log("Good");
+            }
+            c();
+        }
+        b();
+
+        // Anonymous Function
+        let d = function(){
+            console.log("Good Day");
+        };
+        d();
+
+        // Aero Function
+        let e = () =>{
+            console.log("Good Morning")
+        }
+        e();
+
+        // Immediately Invoked Function
+        (function(){
+            console.log("Good Night");
+        })();
+    </script>
+</body>
+</html>
