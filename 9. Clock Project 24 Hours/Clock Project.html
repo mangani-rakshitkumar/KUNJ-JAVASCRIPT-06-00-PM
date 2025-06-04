@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLOCK PROJECT</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .AA{
+            width: 300px;
+            height: 300px;
+            color: black;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: transparent;
+            cursor: pointer;
+            box-shadow: aqua 0px 0px 0px 7px;
+        }
+    </style>
+</head>
+<body>
+    <div class="AA">
+        <h1 id="clock"></h1>
+    </div>
+
+    <script>
+       function showTime() {
+            let time = new Date();
+            let hours = time.getHours();
+            let minutes = time.getMinutes();
+            let seconds = time.getSeconds();
+
+            document.getElementById("clock").innerHTML = hours + ":" + minutes + ":" + seconds;
+        }
+        setInterval(showTime, 1000);
+    </script>
+</body>
+</html>
